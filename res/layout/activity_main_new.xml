@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical">  
+	<LinearLayout 
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent"  
+	    android:orientation="vertical"  
+	    android:background="#ffffffff">  
+	    
+	    <ImageView
+			android:layout_width="fill_parent" 
+			android:layout_height="60dip"
+			android:src="@drawable/main_title" 
+			android:scaleType="fitXY"/>
+			
+		<LinearLayout 
+		    android:layout_width="fill_parent"  
+		    android:layout_height="fill_parent"  
+		    android:orientation="vertical"  
+		    android:background="#ffffffff"> 
+		    
+		    <!-- 
+		    <ImageView
+		        android:id="@+id/image_top_banner" 
+				android:layout_width="fill_parent" 
+				android:layout_height="0dip"
+				android:layout_weight="0.32"
+				android:src="@drawable/main_banner"
+				android:scaleType="fitXY" />
+		     -->
+		     <android.support.v4.view.ViewPager
+	       		android:id="@+id/viewpager"
+	       		android:layout_width="fill_parent"
+	       		android:layout_height="0dip"
+				android:layout_weight="0.32"/>
+		      
+		    <LinearLayout
+		        android:id="@+id/layout_fragment"
+			    android:layout_width="fill_parent"  
+			    android:layout_height="0dip"
+				android:layout_weight="0.68"
+			    android:layout_margin="5dip"
+			    android:orientation="vertical">  
+			    <LinearLayout
+				    android:layout_width="fill_parent"  
+				    android:layout_height="0dip"  
+				    android:layout_weight="1"
+				    android:orientation="horizontal">  
+				    <Button
+				        android:id="@+id/btn_makeorder" 
+						android:layout_width="fill_parent" 
+						android:layout_height="fill_parent"
+						android:layout_weight="1"
+						android:layout_marginLeft="5dip"
+						android:layout_marginRight="5dip"
+						android:layout_marginTop="5dip"
+						android:layout_marginBottom="5dip"
+						android:background="@drawable/enquiry_style" />
+					 <Button
+				        android:id="@+id/btn_getorder" 
+						android:layout_width="fill_parent" 
+						android:layout_height="fill_parent"
+						android:layout_weight="1"
+						android:layout_marginLeft="5dip"
+						android:layout_marginRight="5dip"
+						android:layout_marginTop="5dip"
+						android:layout_marginBottom="5dip"
+						android:background="@drawable/orders_style" />
+				</LinearLayout>
+				<LinearLayout
+				    android:layout_width="fill_parent"  
+				    android:layout_height="0dip"  
+				    android:orientation="horizontal"
+				    android:layout_weight="1">  
+				    <LinearLayout
+					    android:layout_width="fill_parent"  
+					    android:layout_height="fill_parent"  
+					    android:layout_weight="1"
+					    android:orientation="vertical">  
+						<Button
+					        android:id="@+id/btn_brand" 
+							android:layout_width="fill_parent" 
+							android:layout_height="0dip"
+							android:layout_weight="0.6"
+							android:layout_marginLeft="5dip"
+							android:layout_marginRight="5dip"
+							android:layout_marginTop="5dip"
+							android:layout_marginBottom="5dip"
+							android:background="@drawable/brand_style" />
+					    <Button
+					        android:id="@+id/btn_myinfo" 
+							android:layout_width="fill_parent" 
+							android:layout_height="0dip"
+							android:layout_weight="0.4"
+							android:layout_marginLeft="5dip"
+							android:layout_marginRight="5dip"
+							android:layout_marginTop="5dip"
+							android:layout_marginBottom="5dip"
+							android:background="@drawable/information_style" />
+					</LinearLayout> 
+					<Button
+				        android:id="@+id/btn_new" 
+						android:layout_width="fill_parent" 
+						android:layout_height="fill_parent"
+						android:layout_weight="1"
+						android:layout_marginLeft="5dip"
+						android:layout_marginRight="5dip"
+						android:layout_marginTop="5dip"
+						android:layout_marginBottom="5dip"
+						android:background="@drawable/new_style" />
+				</LinearLayout>  
+			    <LinearLayout
+				    android:layout_width="fill_parent"  
+				    android:layout_height="0dip"  
+				    android:orientation="horizontal"
+				    android:layout_weight="0.4">  
+				    <Button
+				        android:id="@+id/btn_wechat" 
+						android:layout_width="fill_parent" 
+						android:layout_height="fill_parent"
+						android:layout_weight="1"
+						android:layout_marginLeft="5dip"
+						android:layout_marginRight="5dip"
+						android:layout_marginTop="5dip"
+						android:layout_marginBottom="5dip"
+						android:background="@drawable/wechat_style" />
+					<Button
+				        android:id="@+id/btn_phone" 
+						android:layout_width="fill_parent" 
+						android:layout_height="fill_parent"
+						android:layout_weight="1"
+						android:layout_marginLeft="5dip"
+						android:layout_marginRight="5dip"
+						android:layout_marginTop="5dip"
+						android:layout_marginBottom="5dip"
+						android:background="@drawable/phone_style" />
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>  
+	
+	<include layout="@layout/progress_bar" />
+	
+</RelativeLayout>

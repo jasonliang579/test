@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical"  
+    android:background="#ffeeeeee">  
+    
+    <include layout="@layout/title_bar"/>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"  
+    	android:layout_height="50dip"  
+    	android:layout_marginTop="2dip"
+    	android:background="#ffffffff"
+    	android:gravity="center_vertical"
+    	android:orientation="horizontal">
+    	<RelativeLayout 
+    	    android:layout_width="0dip"  
+    		android:layout_height="fill_parent" 
+    		android:layout_weight="1">
+    	    <TextView 
+	            android:id="@+id/order_text_all"
+	            android:layout_width="fill_parent"  
+	    		android:layout_height="fill_parent" 
+	    		android:gravity="center"
+	    		android:text="全部"
+	    		android:textSize="17sp"
+	    		android:textColor="@color/hardware_item_text_redcolor"/>
+    	    <TextView 
+    	        android:id="@+id/order_text_all_select"
+    	        android:layout_width="fill_parent"  
+	    		android:layout_height="2dip" 
+	    		android:layout_marginLeft="13dip"
+	    		android:layout_marginRight="13dip"
+	    		android:layout_alignParentBottom="true"
+	    		android:background="@color/hardware_item_text_redcolor"/>
+    	</RelativeLayout>
+    	<RelativeLayout 
+    	    android:layout_width="0dip"  
+    		android:layout_height="fill_parent" 
+    		android:layout_weight="1">
+    	    <TextView 
+	            android:id="@+id/order_text_unpay"
+	            android:layout_width="fill_parent"  
+	    		android:layout_height="fill_parent" 
+	    		android:gravity="center"
+	    		android:text="待付款"
+	    		android:textSize="17sp"
+	    		android:textColor="@color/hardware_item_text_blackcolor"/>
+    	    <TextView 
+    	        android:id="@+id/order_text_unpay_select"
+    	        android:layout_width="fill_parent"  
+	    		android:layout_height="2dip" 
+	    		android:layout_marginLeft="13dip"
+	    		android:layout_marginRight="13dip"
+	    		android:layout_alignParentBottom="true"/>
+    	</RelativeLayout>
+    	<RelativeLayout 
+    	    android:layout_width="0dip"  
+    		android:layout_height="fill_parent" 
+    		android:layout_weight="1">
+    	    <TextView 
+	            android:id="@+id/order_text_unsend"
+	            android:layout_width="fill_parent"  
+	    		android:layout_height="fill_parent" 
+	    		android:gravity="center"
+	    		android:text="待发货"
+	    		android:textSize="17sp"
+	    		android:textColor="@color/hardware_item_text_blackcolor"/>
+    	    <TextView 
+    	        android:id="@+id/order_text_unsend_select"
+    	        android:layout_width="fill_parent"  
+	    		android:layout_height="2dip" 
+	    		android:layout_marginLeft="13dip"
+	    		android:layout_marginRight="13dip"
+	    		android:layout_alignParentBottom="true"/>
+    	</RelativeLayout>
+    	<RelativeLayout 
+    	    android:layout_width="0dip"  
+    		android:layout_height="fill_parent" 
+    		android:layout_weight="1">
+    	    <TextView 
+	            android:id="@+id/order_text_unreceive"
+	            android:layout_width="fill_parent"  
+	    		android:layout_height="fill_parent" 
+	    		android:gravity="center"
+	    		android:text="待收货"
+	    		android:textSize="17sp"
+	    		android:textColor="@color/hardware_item_text_blackcolor"/>
+    	    <TextView 
+    	        android:id="@+id/order_text_unreceive_select"
+    	        android:layout_width="fill_parent"  
+	    		android:layout_height="2dip" 
+	    		android:layout_marginLeft="13dip"
+	    		android:layout_marginRight="13dip"
+	    		android:layout_alignParentBottom="true"/>
+    	</RelativeLayout>
+        
+    </LinearLayout>
+     
+    <android.support.v4.view.ViewPager
+       android:id="@+id/order_viewpager"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"/>
+    
+    
+</LinearLayout>  

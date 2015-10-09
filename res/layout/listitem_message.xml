@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" 
+    android:orientation="vertical">
+	<LinearLayout 
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent" 
+	    android:orientation="vertical"
+		android:background="#ffffffff"
+		android:paddingBottom="10dip">
+		
+		<LinearLayout 
+		    android:layout_width="fill_parent"  
+		    android:layout_height="30dip" 
+		    android:orientation="horizontal"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip">
+			<TextView 
+				android:id="@+id/text_company"
+				android:layout_width="wrap_content"  
+				android:layout_height="30dip" 
+				android:layout_gravity="center_vertical"
+				android:text=""
+				android:textColor="#ff4e90e9"
+				android:textSize="15sp"/>
+			<TextView 
+				android:id="@+id/text_name"
+				android:layout_width="wrap_content"  
+				android:layout_height="30dip" 
+				android:layout_marginLeft="10dip"
+				android:layout_gravity="center_vertical"
+				android:text=""
+				android:textColor="#ff4e90e9"
+				android:textSize="15sp"/>
+			<RelativeLayout 
+			    android:layout_width="fill_parent"  
+			    android:layout_height="30dip" 
+			    android:orientation="horizontal"
+				android:layout_marginLeft="10dip"
+				android:layout_marginRight="10dip">
+				<LinearLayout 
+					android:id="@+id/layout_reply"
+				    android:layout_width="wrap_content"  
+				    android:layout_height="30dip" 
+				    android:orientation="horizontal"
+					android:layout_alignParentRight="true">
+					<ImageView 
+						android:layout_width="20dip"  
+						android:layout_height="20dip" 
+						android:src="@drawable/message_reply"/>
+					<TextView 
+						android:id="@+id/text_reply"
+						android:layout_width="wrap_content"  
+						android:layout_height="30dip" 
+						android:layout_marginLeft="10dip"
+						android:layout_gravity="center_vertical"
+						android:text="回复"
+						android:textColor="@color/hardware_getorder_label_gradcolor"
+						android:textSize="15sp"/>
+				</LinearLayout>
+			</RelativeLayout>
+		</LinearLayout>
+		
+		<TextView 
+			android:id="@+id/text_time"
+			android:layout_width="wrap_content"  
+			android:layout_height="wrap_content" 
+			android:layout_marginLeft="10dip"
+			android:layout_gravity="center_vertical"
+			android:text=""
+			android:textColor="@color/hardware_getorder_label_gradcolor"
+			android:textSize="14sp"/>
+			
+			<!-- 被回复留言 begin -->
+			<LinearLayout 
+				android:id="@+id/layout_reply_message"
+			    android:layout_width="fill_parent"  
+			    android:layout_height="fill_parent" 
+			    android:layout_marginLeft="10dip"
+			    android:layout_marginRight="10dip"
+			    android:orientation="vertical"
+				android:background="@drawable/edt_mark_bg">
+				
+				<LinearLayout 
+				    android:layout_width="fill_parent"  
+				    android:layout_height="30dip" 
+				    android:orientation="horizontal"
+					android:layout_marginLeft="10dip"
+					android:layout_marginRight="10dip">
+					<TextView 
+						android:id="@+id/text_reply_company"
+						android:layout_width="wrap_content"  
+						android:layout_height="30dip" 
+						android:layout_gravity="center_vertical"
+						android:text=""
+						android:textColor="#ff4e90e9"
+						android:textSize="15sp"/>
+					<TextView 
+						android:id="@+id/text_reply_name"
+						android:layout_width="wrap_content"  
+						android:layout_height="30dip" 
+						android:layout_marginLeft="10dip"
+						android:layout_gravity="center_vertical"
+						android:text=""
+						android:textColor="#ff4e90e9"
+						android:textSize="15sp"/>
+				</LinearLayout>
+				
+				<TextView 
+					android:id="@+id/text_reply_time"
+					android:layout_width="wrap_content"  
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="10dip"
+					android:layout_gravity="center_vertical"
+					android:text=""
+					android:textColor="@color/hardware_getorder_label_gradcolor"
+					android:textSize="14sp"/>
+				<TextView 
+					android:id="@+id/text_reply_content"
+					android:layout_width="wrap_content"  
+					android:layout_height="wrap_content" 
+					android:layout_marginLeft="10dip"
+					android:layout_gravity="center_vertical"
+					android:text=""
+					android:textColor="@color/hardware_getorder_text_gradcolor"
+					android:textSize="15sp"/>	
+						
+			</LinearLayout>
+			<!-- 被回复留言 end -->
+			
+		<TextView 
+			android:id="@+id/text_content"
+			android:layout_width="wrap_content"  
+			android:layout_height="wrap_content" 
+			android:layout_marginLeft="10dip"
+			android:layout_gravity="center_vertical"
+			android:text=""
+			android:textColor="@color/hardware_getorder_text_gradcolor"
+			android:textSize="15sp"/>	
+				
+	</LinearLayout>
+</LinearLayout>

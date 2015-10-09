@@ -1,0 +1,206 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jieyangjiancai.zwj"
+    android:versionCode="10018"
+    android:versionName="1.0.18" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:name=".WJApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".ui.MainActivityNew"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" 
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.PensonInfoActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.AllOrderActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.ConfirmOrderActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.OrderDetailActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".ui.AddressManageActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".ui.AddressModifyActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".ui.ArriveToPayActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".ui.ModifyOrderActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".ui.SettingActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".ui.ShoppingCartActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".ui.QueryOrderHistoryActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".ui.QueryOrderDetailPriceActivity" android:screenOrientation="portrait"  />
+
+        <activity android:name=".ui.GetOrderMakePriceActivity" android:screenOrientation="portrait"  />
+		<activity android:name=".ui.QueryOrderActivity" android:screenOrientation="portrait"
+		    android:windowSoftInputMode="adjustUnspecified|stateHidden"
+      		android:configChanges="orientation|keyboardHidden"  />
+		<activity android:name=".ui.LoginActivity" android:screenOrientation="portrait"  />
+		<activity android:name=".ui.MyInfoActivity" android:screenOrientation="portrait"  />
+		<activity android:name=".ui.GetOrderActivity" android:screenOrientation="portrait"  />
+		<activity android:name=".ui.GetOrderMyPriceActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.PayOrderActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.MainActivityBrand" android:screenOrientation="portrait" />
+		<activity android:name=".ui.WebShareActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.AboutActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.BankAccountActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.GuideActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.AgreementActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.RebateListActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.IndustryMessageActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.SendMessageActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.WarrantyActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.HelpActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.MessageListActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.AddMessageActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.GetOrderHelpActivity" android:screenOrientation="portrait" />
+		
+			
+		<activity
+			 android:name="com.mob.tools.MobUIShell"
+			 android:theme="@android:style/Theme.Translucent.NoTitleBar"
+			 android:configChanges="keyboardHidden|orientation|screenSize"
+			 android:screenOrientation="portrait"
+			 android:windowSoftInputMode="stateHidden|adjustResize" >
+			 <intent-filter>
+				 <data android:scheme="tencent100371282" />
+				 <action android:name="android.intent.action.VIEW" />
+				 <category android:name="android.intent.category.BROWSABLE" />
+				 <category android:name="android.intent.category.DEFAULT" />
+			 </intent-filter>
+		 </activity>
+		
+		<activity
+		 	android:name=".wxapi.WXEntryActivity"
+		 	android:theme="@android:style/Theme.Translucent.NoTitleBar"
+		 	android:configChanges="keyboardHidden|orientation|screenSize"
+		 	android:exported="true"
+		 	android:screenOrientation="portrait" />
+		
+ 	 	<!-- 【必须】 (2.30及以上版新增)展示通知的activity -->
+        <!-- 【必须】 exported设置为true -->
+        <activity
+            android:name="com.tencent.android.tpush.XGPushActivity"
+            android:theme="@android:style/Theme.Translucent"
+            android:exported="true" >
+            <intent-filter>
+                 <!-- 若使用AndroidStudio，请设置android:name="android.intent.action"-->
+                <action android:name="" />
+            </intent-filter>
+        </activity>
+
+        <!-- 【必须】 信鸽receiver广播接收 -->
+        <receiver
+            android:name="com.tencent.android.tpush.XGPushReceiver"
+            android:process=":xg_service_v2" >
+            <intent-filter android:priority="0x7fffffff" >
+
+                <!-- 【必须】 信鸽SDK的内部广播 -->
+                <action android:name="com.tencent.android.tpush.action.SDK" />
+                <action android:name="com.tencent.android.tpush.action.INTERNAL_PUSH_MESSAGE" />
+                <!-- 【必须】 系统广播：开屏和网络切换 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <!-- 【可选】 一些常用的系统广播，增强信鸽service的复活机会，请根据需要选择。当然，你也可以添加APP自定义的一些广播让启动service -->
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+            <!-- 【可选】 usb相关的系统广播，增强信鸽service的复活机会，请根据需要添加 -->
+            <intent-filter android:priority="0x7fffffff" >
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <action android:name="android.intent.action.MEDIA_CHECKING" />
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+        <!-- 【必须】 信鸽service -->
+        <service
+            android:name="com.tencent.android.tpush.service.XGPushService"
+            android:exported="true"
+            android:persistent="true"
+            android:process=":xg_service_v2" />
+
+        <!-- 【必须】 通知service，其中android:name部分要改为当前包名 -->
+        <service
+            android:name="com.tencent.android.tpush.rpc.XGRemoteService"
+            android:exported="true" >
+            <intent-filter>
+                 <!-- 【必须】 请修改为当前APP名包.PUSH_ACTION，如demo的包名为：com.qq.xgdemo -->
+                <action android:name="com.qq.xgdemo.PUSH_ACTION" />
+            </intent-filter>
+        </service>
+        
+        <!-- 已废弃，可删除之；若不删除也不会有任何副作用 -->
+        <!--<service
+            android:name="com.tencent.android.tpush.service.XGDaemonService"
+            android:process=":qq_push_daemon" />
+        -->
+        <!-- 【可选】信鸽拉起其他APP应用，若应用在本地找不到可以自动下载 -->
+        <!--
+              <service
+            android:name="com.tencent.android.tpush.XGDownloadService"
+            android:enabled="true"
+            android:exported="false" />
+        -->
+        <!-- 【可选】APP实现的Receiver，用于接收消息透传和操作结果的回调，请根据需要添加 -->
+        <!-- YOUR_PACKAGE_PATH.CustomPushReceiver需要改为自己的Receiver： -->
+        <receiver android:name="com.jieyangjiancai.zwj.receiver.MessageReceiver" >
+            <intent-filter>
+                <!-- 接收消息透传 -->
+                <action android:name="com.tencent.android.tpush.action.PUSH_MESSAGE" />
+                <!-- 监听注册、反注册、设置/删除标签、通知被点击等处理结果 -->
+                <action android:name="com.tencent.android.tpush.action.FEEDBACK" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 【必须】 请修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
+        <meta-data
+            android:name="XG_V2_ACCESS_ID"
+            android:value="2100144550" />
+        <!-- 【必须】 请修改为APP的AccessKey，“A”开头的12位字符串，中间没空格 -->
+        <meta-data
+            android:name="XG_V2_ACCESS_KEY"
+            android:value="A1866XNHB9VR" />
+        
+        
+        <!-- 【！！不需要添加！！】 此处的secretkey主要是为了Demo一键诊断用，实际APP不用添加，切记！ -->
+        <meta-data
+            android:name="XG_V2_SECRET_KEY"
+            android:value="4b5a8de7da6d1e2410b3d8891587fec0" />
+    </application>
+
+    <!-- 【必须】 信鸽SDK所需权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 【可选】 信鸽SDK所需权限 -->
+ 
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+</manifest>

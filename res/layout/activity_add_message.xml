@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical">  
+	<LinearLayout 
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent" 
+	    android:layout_above="@+id/layout_write_message"
+	    android:background="#ffffffff"
+	    android:orientation="vertical">
+	    
+	    <include layout="@layout/title_bar" android:layout_height="50dip"/>
+		 
+	    <EditText
+			android:id="@+id/edit_mark"
+			android:layout_width="fill_parent"  
+			android:layout_height="wrap_content" 
+			android:background="@drawable/edit_bg2"
+			android:singleLine="false"
+			android:lines="5"
+			android:layout_marginTop="10dip"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip"
+			android:paddingTop="3dip"
+			android:paddingBottom="3dip"
+			android:paddingLeft="5dip"
+			android:paddingRight="5dip"
+			android:gravity="top"
+			android:textSize="14sp"
+			android:hint="请输入留言"
+			android:windowSoftInputMode="adjustUnspecified|stateHidden"
+			/>
+		<Button 
+			android:id="@+id/btn_add_message"
+			android:layout_width="200dip"  
+			android:layout_height="40dip"
+			android:layout_marginTop="10dip"
+			android:layout_gravity="center"
+			android:text="提交留言"
+			android:textColor="#ffffffff"
+			android:background="@drawable/conform_order"/>
+		
+	</LinearLayout>
+	
+	<include layout="@layout/progress_bar" />
+	
+</RelativeLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" 
+    android:orientation="vertical"
+	android:background="#ffeeeeee">
+	<LinearLayout 
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent" 
+	    android:orientation="vertical"
+		android:background="#ffffffff"
+		android:layout_marginBottom="10dip"
+		android:paddingBottom="10dip">
+		
+		<include layout="@layout/getorder_child_item" />
+		
+		<TextView 
+			android:id="@+id/text_make_price_count"
+			android:layout_width="wrap_content"  
+			android:layout_height="wrap_content" 
+			android:layout_gravity="center"
+			android:text=""
+			android:textColor="@color/hardware_getorder_text_gradcolor"
+			android:textSize="18sp"/>
+		<LinearLayout 
+			android:id="@+id/layout_message"
+		    android:layout_width="fill_parent"  
+		    android:layout_height="30dip" 
+		    android:orientation="horizontal"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip">
+			<ImageView 
+				android:layout_width="30dip"  
+				android:layout_height="30dip"
+				android:src="@drawable/message"
+				android:scaleType="centerInside"/>
+			<TextView 
+				android:layout_width="wrap_content"  
+				android:layout_height="30dip" 
+				android:layout_gravity="center"
+				android:text="我要留言"
+				android:textColor="@color/hardware_getorder_label_gradcolor"
+				android:textSize="15sp"/>
+		</LinearLayout>
+		<LinearLayout 
+			android:id="@+id/layout_offer"
+		    android:layout_width="fill_parent"  
+		    android:layout_height="fill_parent" 
+		    android:orientation="horizontal"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip">
+			<Button 
+				android:id="@+id/btn_makeprice"
+				android:layout_width="0dip"  
+				android:layout_height="40dip"
+				android:layout_weight="1"
+				android:layout_marginRight="5dip"
+				android:layout_gravity="center"
+				android:text="我要报价"
+				android:textColor="#ffffffff"
+				android:textSize="15sp"
+				android:background="@drawable/conform_order"/>	
+			<Button 
+				android:id="@+id/btn_makeshare"
+				android:layout_width="0dip"  
+				android:layout_height="40dip"
+				android:layout_weight="1"
+				android:layout_gravity="center"
+				android:layout_marginLeft="5dip"
+				android:text="分享询单"
+				android:textColor="#ffffffff"
+				android:textSize="15sp"
+				android:background="@drawable/sharewechat"/>		
+		</LinearLayout>			
+	</LinearLayout>
+</LinearLayout>

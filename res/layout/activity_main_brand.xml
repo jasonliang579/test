@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical"  >  
+    
+    <!-- 标题栏 -->
+    <RelativeLayout 
+        android:id="@+id/layout_home_title"
+        android:layout_width="fill_parent"  
+    	android:layout_height="50dip"
+    	android:layout_gravity="center_vertical"
+    	android:background="#ff4e90e9">
+        <ImageView 
+	        android:id="@+id/title_bar_back"
+	        android:layout_width="40dip"  
+	    	android:layout_height="30dip"
+	    	android:layout_centerVertical="true"
+	    	android:src="@drawable/back"  />
+        <LinearLayout 
+            android:layout_width="fill_parent"  
+    		android:layout_height="fill_parent"
+    		android:layout_marginLeft="50dip"
+	    	android:layout_marginRight="50dip"
+    		android:orientation="horizontal">
+    		<RelativeLayout 
+    		    android:layout_width="0dip"  
+    			android:layout_height="fill_parent"
+    			android:layout_weight="1">
+    		    <TextView 
+    		        android:id="@+id/text_cable"
+	    		    android:layout_width="fill_parent"  
+	    			android:layout_height="fill_parent"
+	    			android:gravity="center"
+	    			android:layout_gravity="center"
+	    			android:text="电线电缆"
+	    			android:textSize="18sp"
+	    			android:textColor="#ffffffff"/>
+    		    <TextView 
+    		        android:id="@+id/text_cable_select"
+	    		    android:layout_width="fill_parent"  
+	    			android:layout_height="2dip"
+	    			android:layout_marginLeft="30dip"
+	    			android:layout_marginRight="30dip"
+	    			android:layout_alignParentBottom="true"
+	    			android:background="#ffffffff"/>
+    		</RelativeLayout>
+    		<RelativeLayout 
+    		    android:layout_width="0dip"  
+    			android:layout_height="fill_parent"
+    			android:layout_weight="1">
+    		    <TextView 
+    		        android:id="@+id/text_switch"
+	    		    android:layout_width="fill_parent"  
+	    			android:layout_height="fill_parent"
+	    			android:gravity="center"
+	    			android:layout_gravity="center"
+	    			android:text="开关电器"
+	    			android:textSize="18sp"
+	    			android:textColor="#ffffffff"/>
+    		    <TextView 
+    		        android:id="@+id/text_switch_select"
+	    		    android:layout_width="fill_parent"  
+	    			android:layout_height="2dip"
+	    			android:layout_marginLeft="30dip"
+	    			android:layout_marginRight="30dip"
+	    			android:layout_alignParentBottom="true"
+	    			android:background="#ffffffff"
+	    			android:visibility="invisible"/>
+    		</RelativeLayout>
+        </LinearLayout>
+        
+    </RelativeLayout>
+    
+    
+    <LinearLayout
+        android:id="@+id/layout_fragment"
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent"  
+	    android:orientation="vertical">  
+	</LinearLayout>  
+	
+</LinearLayout>  

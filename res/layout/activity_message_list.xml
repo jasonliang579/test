@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical">  
+	<LinearLayout 
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent" 
+	    android:layout_above="@+id/layout_write_message"
+	    android:orientation="vertical">
+	    
+	    <include layout="@layout/title_bar" android:layout_height="50dip"/>
+		 
+	    <com.jieyangjiancai.zwj.views.PullToRefreshView
+	        android:id="@+id/pull_refresh_view"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" 
+	        android:orientation="vertical">
+	        <ListView
+		        android:id="@+id/list_message"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"/>
+	    </com.jieyangjiancai.zwj.views.PullToRefreshView> 
+		
+	</LinearLayout>
+	
+	<LinearLayout 
+		android:id="@+id/layout_write_message"
+	    android:layout_width="fill_parent"  
+	    android:layout_height="50dip"
+		android:background="#ffffffff"
+	    android:layout_alignParentBottom="true">
+	    <RelativeLayout 
+		    android:layout_width="fill_parent"  
+		    android:layout_height="fill_parent"
+		    android:layout_gravity="center_vertical"
+		    android:gravity="center_vertical"
+		    android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip">
+		    <TextView 
+		    	android:layout_width="fill_parent"  
+		    	android:layout_height="40dip"
+		    	android:gravity="center_vertical"
+		    	android:layout_gravity="center_vertical"
+		    	android:paddingLeft="45dip"
+		    	android:text="写点什么"
+		    	android:textColor="@color/hardware_getorder_label_gradcolor"
+		    	android:background="@drawable/edit_bg2"/>
+		    <ImageView 
+		    	android:layout_width="20dip"  
+		    	android:layout_height="40dip"
+		    	android:src="@drawable/add_message"
+		    	android:scaleType="fitCenter"
+		    	android:layout_marginLeft="10dip"
+		    	android:layout_gravity="center_vertical"
+		    	android:gravity="center_vertical"/>
+		</RelativeLayout>
+	</LinearLayout>
+	
+	<include layout="@layout/progress_bar" />
+	
+	
+</RelativeLayout>

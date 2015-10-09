@@ -1,0 +1,29 @@
+{\rtf1\ansi\ansicpg936\cocoartf1348\cocoasubrtf170
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl720\margr720\vieww17360\viewh9500\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs20 \cf0 09-23 13:18:30.649: E/AndroidRuntime(10705): java.lang.RuntimeException: Error receiving broadcast Intent \{ act=com.jieyangjiancai.zwj.notify flg=0x10 (has extras) \} in com.jieyangjiancai.zwj.base.BaseActivity$wujinReceiver@41fb4360\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:773)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.os.Handler.handleCallback(Handler.java:615)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.os.Handler.dispatchMessage(Handler.java:92)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.os.Looper.loop(Looper.java:137)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.app.ActivityThread.main(ActivityThread.java:4802)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at java.lang.reflect.Method.invokeNative(Native Method)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at java.lang.reflect.Method.invoke(Method.java:511)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:809)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:576)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at dalvik.system.NativeStart.main(Native Method)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): Caused by: android.view.WindowManager$BadTokenException: Unable to add window -- token android.os.BinderProxy@41db6648 is not valid; is your activity running?\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.view.ViewRootImpl.setView(ViewRootImpl.java:590)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:326)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.view.WindowManagerImpl.addView(WindowManagerImpl.java:224)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.view.WindowManagerImpl$CompatModeWrapper.addView(WindowManagerImpl.java:149)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.view.Window$LocalWindowManager.addView(Window.java:547)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.app.Dialog.show(Dialog.java:277)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.app.AlertDialog$Builder.show(AlertDialog.java:932)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at com.jieyangjiancai.zwj.base.BaseActivity.normalDialog(BaseActivity.java:145)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at com.jieyangjiancai.zwj.base.BaseActivity$wujinReceiver.onReceive(BaseActivity.java:93)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	at android.app.LoadedApk$ReceiverDispatcher$Args.run(LoadedApk.java:763)\
+09-23 13:18:30.649: E/AndroidRuntime(10705): 	... 9 more}
