@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" 
+    android:orientation="vertical">
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="10dip"
+	    android:background="#ffffffff"
+	    android:orientation="vertical"
+	    android:paddingBottom="10dip"
+	    android:paddingTop="10dip" >
+	
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:orientation="horizontal" >
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="订单号："
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	        <TextView
+	        	android:id="@+id/text_orderid"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="45dip"
+	            android:text=""
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:orientation="horizontal" >
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="获取的优惠券金额："
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	
+	        <TextView
+	        	android:id="@+id/text_rebate"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text=""
+	             android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:layout_marginRight="10dip"
+	        android:orientation="horizontal" >
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="生成日期："
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	
+	        <TextView
+	        	android:id="@+id/text_time"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text=""
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	    </LinearLayout>
+	
+	</LinearLayout>
+</LinearLayout>

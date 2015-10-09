@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical"  
+    android:background="@color/hardware_item_widthbackground">  
+    
+    <include layout="@layout/title_bar" />
+     
+    <LinearLayout
+	    android:layout_width="fill_parent"  
+	    android:layout_height="wrap_content"  
+	    android:paddingLeft="10dip"
+	    android:paddingRight="10dip"
+	    android:orientation="vertical">  
+	    
+        <TextView 
+            android:layout_width="fill_parent"  
+    		android:layout_height="120dip" 
+    		android:gravity="center"
+    		android:text="下单成功！"
+    		android:textSize="30sp"
+    		android:textColor="@color/hardware_item_text_redcolor"/>
+        <TextView 
+            android:layout_width="wrap_content"  
+    		android:layout_height="wrap_content" 
+    		android:gravity="center_vertical"
+    		android:layout_marginLeft="5dip"
+    		android:text="使用货到付款，等通知放货，将无法使用优惠券！推荐您使用银行卡支付，或者银行汇款支付！"
+    		android:textSize="16sp"/>
+        <Button
+            android:layout_width="fill_parent"  
+    		android:layout_height="wrap_content"  
+    		android:layout_marginTop="7dip"
+    		android:text="继续购买"
+    		android:textColor="#ffffffff"
+    		android:background="@drawable/btn_red"/>
+  	</LinearLayout>  
+    
+</LinearLayout>  

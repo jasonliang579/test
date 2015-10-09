@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dip"
+    android:orientation="vertical"
+    android:background="#fff2f2f2">
+    <!-- 备注 -->
+    <TextView
+        android:id="@+id/text_mark"
+        android:layout_width="fill_parent"  
+    	android:layout_height="wrap_content"
+    	android:paddingLeft="10dip"
+    	android:singleLine="false"
+    	android:lines="4"
+    	android:text="备注"
+    	android:textSize="15sp" 
+    	android:background="@color/hardware_item_widthbackground"/>
+    
+    <!-- 各种金额 -->
+    <TextView
+        android:id="@+id/text_beforediscount"
+        android:layout_width="fill_parent"  
+    	android:layout_height="@dimen/item_height"
+    	android:layout_marginTop="1dip"
+    	android:textSize="18sp"
+    	android:gravity="right|center_vertical"
+    	android:paddingRight="10dip"
+    	android:textColor="@color/hardware_item_text_gradcolor"
+    	android:background="@color/hardware_item_gradbackground" />
+    <TextView
+        android:id="@+id/text_discount"
+        android:layout_width="fill_parent"  
+    	android:layout_height="@dimen/item_height"
+    	android:layout_marginTop="1dip"
+    	android:textSize="18sp"
+    	android:gravity="right|center_vertical"
+    	android:paddingRight="10dip"
+    	android:textColor="@color/hardware_item_text_gradcolor"
+    	android:background="@color/hardware_item_gradbackground" />
+    <TextView
+        android:id="@+id/text_coupon"
+        android:layout_width="fill_parent"  
+    	android:layout_height="@dimen/item_height"
+    	android:layout_marginTop="1dip"
+    	android:textSize="18sp"
+    	android:gravity="right|center_vertical"
+    	android:paddingRight="10dip"
+    	android:textColor="@color/hardware_item_text_gradcolor"
+    	android:background="@color/hardware_item_gradbackground" />
+    <TextView
+        android:id="@+id/text_pay"
+        android:layout_width="fill_parent"  
+    	android:layout_height="@dimen/item_height"
+    	android:layout_marginTop="1dip"
+    	android:textSize="18sp"
+    	android:gravity="right|center_vertical"
+    	android:paddingRight="10dip"
+    	android:textColor="@color/hardware_item_text_gradcolor"
+    	android:background="@color/hardware_item_gradbackground" />
+   
+</LinearLayout>
+
+

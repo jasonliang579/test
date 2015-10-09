@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent"  
+    android:orientation="vertical">  
+	<LinearLayout 
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent" 
+		android:orientation="vertical"
+		android:background="#ffeeeeee">
+	    
+		<include layout="@layout/title_bar" android:layout_height="50dip"/>
+		<com.jieyangjiancai.zwj.views.PullToRefreshView
+	        android:id="@+id/pull_refresh_view"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" 
+	        android:orientation="vertical">
+	        <ListView
+		        android:id="@+id/list_queryorder"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"/>
+	    </com.jieyangjiancai.zwj.views.PullToRefreshView> 
+		
+	</LinearLayout>
+	
+	<include layout="@layout/progress_bar" />
+	
+	<include layout="@layout/full_image_view" />
+	
+</RelativeLayout>

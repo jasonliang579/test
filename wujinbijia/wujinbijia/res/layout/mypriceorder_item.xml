@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" 
+    android:orientation="vertical"
+	android:background="#ffeeeeee">
+	<LinearLayout 
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent" 
+	    android:orientation="vertical"
+		android:background="#ffffffff"
+		android:layout_marginBottom="10dip"
+		android:paddingBottom="10dip">
+		
+		<include layout="@layout/getorder_child_item" />
+		
+		<LinearLayout
+	        android:id="@+id/layout_customer_connect"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical"
+		    android:visibility="gone">
+		    <RelativeLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dip"
+		        android:orientation="horizontal" >
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="联系方式"
+		            android:textColor="@color/hardware_getorder_label_gradcolor"
+		            android:textSize="15sp" />
+		        <LinearLayout
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="80dip"
+			        android:orientation="horizontal" >
+			         <TextView
+			        	android:id="@+id/text_customer_company"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:text=""
+			            android:textColor="@color/hardware_getorder_text_gradcolor"
+			            android:textSize="15sp" />
+			        <TextView
+			        	android:id="@+id/text_customer_name"
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="5dip"
+			            android:text=""
+			            android:textColor="@color/hardware_getorder_text_gradcolor"
+			            android:textSize="15sp" />
+		        </LinearLayout>
+		    </RelativeLayout>
+		    <RelativeLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dip"
+		        android:orientation="horizontal" >
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text=""
+		            android:textColor="@color/hardware_getorder_label_gradcolor"
+		            android:textSize="15sp" />
+		        <TextView
+		        	android:id="@+id/text_customer_phone"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="80dip"
+		            android:text=""
+		            android:textColor="@color/hardware_getorder_text_gradcolor"
+		            android:textSize="15sp" />
+		    </RelativeLayout>
+		    <RelativeLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dip"
+		        android:orientation="horizontal" >
+		        <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text=""
+		            android:textColor="@color/hardware_getorder_label_gradcolor"
+		            android:textSize="15sp" />
+		        <TextView
+		        	android:id="@+id/text_customer_address"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="80dip"
+		            android:text=""
+		            android:textColor="@color/hardware_getorder_text_gradcolor"
+		            android:textSize="15sp" />
+		    </RelativeLayout>
+		</LinearLayout>
+		
+		<TextView
+		    android:layout_width="fill_parent"  
+			android:layout_height="1dip"
+			android:layout_marginTop="10dip"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip"
+			android:background="#ffeeeeee"/>
+		
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:layout_marginTop="10dip"
+	        android:orientation="horizontal" >
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="我的报价是"
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	        <TextView
+	        	android:id="@+id/text_my_price"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text=""
+	            android:textColor="#ffff0000"
+	            android:textSize="15sp" />
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="元"
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	    </LinearLayout>
+	    
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:layout_marginTop="3dip"
+	        android:orientation="horizontal" >
+	        <TextView
+	            android:layout_width="80dip"
+	            android:layout_height="wrap_content"
+	            android:text="报价时间"
+	            android:textColor="@color/hardware_getorder_label_gradcolor"
+	            android:textSize="15sp" />
+	        <TextView
+	        	android:id="@+id/text_price_time"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text=""
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	    </LinearLayout>
+	    
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:layout_marginTop="3dip"
+	        android:orientation="horizontal" >
+	        <TextView
+	            android:layout_width="80dip"
+	            android:layout_height="wrap_content"
+	            android:text="报价内容"
+	            android:textColor="@color/hardware_getorder_label_gradcolor"
+	            android:textSize="15sp" />
+	        
+	        <ImageView
+	            android:id="@+id/image_price_content1"
+	            android:layout_width="60dip"
+	            android:layout_height="60dip" />
+	        <ImageView
+	            android:id="@+id/image_price_content2"
+	            android:layout_width="60dip"
+	            android:layout_height="60dip"
+	            android:layout_marginLeft="5dip" />
+	        <ImageView
+	            android:id="@+id/image_price_content3"
+	            android:layout_width="60dip"
+	            android:layout_height="60dip"
+	            android:layout_marginLeft="5dip" />
+	    </LinearLayout>
+	    
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:layout_marginTop="3dip"
+	        android:orientation="horizontal" >
+	        <TextView
+	            android:layout_width="80dip"
+	            android:layout_height="wrap_content"
+	            android:text="报价备注"
+	            android:textColor="@color/hardware_getorder_label_gradcolor"
+	            android:textSize="15sp" />
+	        <TextView
+	        	android:id="@+id/text_price_remark"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text=""
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	    </LinearLayout>
+	    
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:layout_marginTop="3dip"
+	        android:orientation="horizontal" >
+	        <TextView
+	        	android:id="@+id/text_content_status"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text=""
+	            android:textColor="@color/hardware_getorder_text_gradcolor"
+	            android:textSize="15sp" />
+	    </LinearLayout>
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:scrollbars="vertical">
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="#ffffffff"
+	        android:orientation="vertical" >
+	
+	        <include
+	            android:layout_height="50dip"
+	            layout="@layout/title_bar" />
+	
+	        <include layout="@layout/getorder_child_item" />
+	
+	        <TextView
+	            android:layout_width="fill_parent"
+	            android:layout_height="1dip"
+	            android:layout_marginLeft="10dip"
+	            android:layout_marginRight="10dip"
+	            android:layout_marginTop="1dip"
+	            android:background="@color/hardware_getorder_split_gradcolor" />
+	
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="10dip" >
+	
+	            <TextView
+	                android:layout_width="100dip"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dip"
+	                android:layout_marginRight="10dip"
+	                android:text="我的总价是" />
+	            <EditText
+	                android:id="@+id/edit_my_price"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/edit_bg"
+	                android:paddingLeft="10dip"
+	                android:digits="1234567890."
+	                android:inputType="number" />
+	            <RelativeLayout
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_gravity="center">
+				    <TextView
+				    	android:id="@+id/text_help"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="10dip"
+		                android:layout_marginRight="15dip"
+		                android:text="帮助" 
+		                android:layout_gravity="center"
+		                android:layout_alignParentRight="true"
+		                android:textSize="14sp"
+						android:textColor="#ff4e90e9"/>
+				</RelativeLayout>
+	        </LinearLayout>
+	
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="10dip" >
+	
+	            <TextView
+	                android:layout_width="100dip"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dip"
+	                android:layout_marginRight="10dip"
+	                android:text="上传报价明细" />
+				<ImageView 
+					android:id="@+id/image_price_content1"
+					android:layout_width="60dip"  
+					android:layout_height="60dip" 
+					android:visibility="gone"/>
+				<ImageView 
+					android:id="@+id/image_price_content2"
+					android:layout_width="60dip"  
+					android:layout_height="60dip" 
+					android:layout_marginLeft="10dip"
+					android:visibility="gone"/>
+				<ImageView 
+					android:id="@+id/image_price_content3"
+					android:layout_width="60dip"  
+					android:layout_height="60dip" 
+					android:layout_marginLeft="5dip"
+					android:visibility="gone"/>
+				<ImageView
+	                android:id="@+id/image_select_picture1"
+	                android:layout_width="40dip"
+	                android:layout_height="40dip"
+	                android:background="@drawable/add_photo_order" />
+	        </LinearLayout>
+	
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dip"
+	            android:layout_marginRight="10dip"
+	            android:layout_marginTop="10dip" >
+	
+	            <TextView
+	                android:layout_width="100dip"
+	                android:layout_height="wrap_content"
+	                android:text="发货的城市" />
+	
+	            <EditText
+	                android:id="@+id/edit_deliver_place"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:paddingLeft="5dip"
+	                android:paddingRight="5dip"
+	                android:layout_marginLeft="10dip"
+	                android:textSize="15sp"
+	                android:background="@drawable/edit_bg" />
+	        </LinearLayout>
+	
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dip"
+	            android:layout_marginRight="10dip"
+	            android:layout_marginTop="1dip"
+	            android:text="备注" />
+	
+	        <EditText
+	            android:id="@+id/edit_remark"
+	            android:layout_width="fill_parent"
+	            android:layout_height="80dip"
+	            android:paddingLeft="5dip"
+	            android:paddingRight="5dip"
+	            android:layout_marginLeft="10dip"
+	            android:layout_marginRight="10dip"
+	            android:textSize="15sp"
+	            android:gravity="top"
+	            android:text="报价当天有效，超过时间请再次确认"
+	            android:background="@drawable/edit_bg2" />
+	
+	        <LinearLayout
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginBottom="10dip"
+	            android:layout_marginTop="10dip" >
+	
+	            <Button
+	                android:id="@+id/btn_my_offer"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dip"
+	                android:layout_marginRight="10dip"
+	                android:layout_weight="1"
+	                android:background="@drawable/conform_order"
+	                android:text="发布报价"
+	                android:textColor="#ffffffff" />
+	
+	            <Button
+	                android:id="@+id/btn_phone"
+	                android:layout_width="0dip"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="10dip"
+	                android:layout_marginRight="10dip"
+	                android:layout_weight="1"
+	                android:background="@drawable/conform"
+	                android:text="联系客服"
+	                android:textColor="#ffffffff" />
+	        </LinearLayout>
+	    </LinearLayout>
+
+	</ScrollView>
+    <include layout="@layout/progress_bar" />
+
+    <include layout="@layout/full_image_view" />
+
+</RelativeLayout>

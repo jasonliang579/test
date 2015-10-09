@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>  
+
+    <!-- 收货人地址 -->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+        android:id="@+id/layout_receiver"
+	    android:layout_width="fill_parent"  
+	    android:layout_height="wrap_content"
+	    android:paddingTop="10dip"
+	    android:paddingBottom="10dip"
+	    android:orientation="horizontal"
+	    android:background="#ffffffff">  
+	    <ImageView 
+	        android:layout_width="0dip"  
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="0.15" 
+	    	android:layout_gravity="center_vertical"
+	    	android:src="@drawable/receiver_address"
+	    	android:scaleType="center" />
+	    <LinearLayout 
+	        android:layout_width="0dip"  
+	    	android:layout_height="wrap_content"  
+	    	android:layout_weight="0.7" 
+	    	android:orientation="vertical">
+	    	<LinearLayout 
+	    	    android:layout_width="fill_parent"  
+			    android:layout_height="wrap_content"  
+			    android:orientation="horizontal">
+			    <TextView 
+			        android:layout_width="wrap_content"  
+			    	android:layout_height="wrap_content"  
+			    	android:text="收货人："
+			    	android:textSize="16sp" />
+			    <TextView 
+			        android:id="@+id/textview_receiver_name"
+			        android:layout_width="wrap_content"  
+			    	android:layout_height="wrap_content"  
+			    	android:layout_marginLeft="5dip"
+			    	android:textSize="15sp" />
+			    <TextView 
+			        android:id="@+id/textview_receiver_phone"
+			        android:layout_width="wrap_content"  
+			    	android:layout_height="wrap_content"  
+			    	android:layout_marginLeft="5dip"
+			    	android:textSize="15sp" />
+	    	</LinearLayout>
+	        <TextView 
+	            android:id="@+id/textview_receiver_address"
+	            android:layout_width="fill_parent"  
+	    		android:layout_height="wrap_content" 
+	    		android:layout_marginTop="3dip"
+	    		android:textSize="15sp"/>
+	    </LinearLayout>
+	    <ImageView 
+	        android:layout_width="0dip"  
+	    	android:layout_height="wrap_content"
+	    	android:layout_weight="0.15" 
+	    	android:layout_gravity="center_vertical"
+	    	android:src="@drawable/more"
+	    	android:scaleType="center" />
+	</LinearLayout>   
+    
+    

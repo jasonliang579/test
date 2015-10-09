@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:layout_width="fill_parent"  
+    android:layout_height="fill_parent" >  
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"  
+    	android:layout_height="fill_parent" 
+		android:layout_above="@+id/layout_cart_bottom"
+		android:orientation="vertical">
+		
+	    <include layout="@layout/title_bar"/>
+	    
+	    <ListView 
+	        android:id="@+id/listview_modifyorder"
+		    android:layout_width="fill_parent"  
+		    android:layout_height="fill_parent" 
+		    android:layout_marginTop="10dip"
+		    android:background="@color/hardware_item_widthbackground"/>
+	   
+    </LinearLayout>
+     
+    <RelativeLayout
+        android:id="@+id/layout_cart_bottom"
+        android:layout_width="fill_parent"  
+    	android:layout_height="50dip" 
+    	android:layout_alignParentBottom="true"
+    	android:background="#fff5f5f5">
+	    <LinearLayout 
+	        android:layout_width="fill_parent"  
+	    	android:layout_height="fill_parent"
+	    	android:layout_marginLeft="10dip" >
+	    	<TextView 
+		        android:layout_width="wrap_content"  
+		    	android:layout_height="fill_parent"
+		    	android:text="总额："
+		    	android:gravity="center_vertical"
+		    	android:textSize="18sp"/>
+			<TextView 
+			    android:id="@+id/textview_total_money"
+		        android:layout_width="wrap_content"  
+		    	android:layout_height="fill_parent"
+		    	android:gravity="center_vertical"
+		    	android:textSize="18sp"
+		    	android:textColor="@color/hardware_item_text_redcolor"/>
+		</LinearLayout>
+		
+		 <TextView 
+	        android:id="@+id/textview_cart_totalmoney"
+	        android:layout_width="wrap_content"  
+	    	android:layout_height="fill_parent"
+	    	android:layout_alignParentRight="true"
+	    	android:gravity="center_vertical"
+	    	android:paddingLeft="10dip"
+	    	android:paddingRight="10dip"
+	    	android:textColor="#ffffffff"
+	    	android:text="确定修改"
+	    	android:textSize="18sp"
+	    	android:background="#ffff4d51"/>
+    </RelativeLayout>
+     
+</RelativeLayout>  
