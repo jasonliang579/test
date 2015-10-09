@@ -857,7 +857,7 @@ public class ImageUtils {
 		}
 	}
 
-	public static Drawable getDrawableByFileName(Context context, String name) {
+	/*public static Drawable getDrawableByFileName(Context context, String name) {
 		Resources resources = context.getResources();
 		Drawable d = null;
 		try {
@@ -873,7 +873,7 @@ public class ImageUtils {
 		}
 
 		return d;
-	}
+	}*/
 
 	public static void setBackgroundDrawable(Context context, View view, Drawable drawable) {
 		if (android.os.Build.VERSION.SDK_INT < 16) {
