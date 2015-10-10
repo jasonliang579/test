@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.jieyangjiancai.zwj.R;
 import com.jieyangjiancai.zwj.network.URLs;
+import com.umeng.analytics.MobclickAgent;
 
 public class AgreementActivity extends Activity implements OnClickListener {
 	private RelativeLayout mLayoutProgress;
@@ -83,5 +84,17 @@ public class AgreementActivity extends Activity implements OnClickListener {
 			break;
 		}
 	}
-	
+	@Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

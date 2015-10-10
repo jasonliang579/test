@@ -1,6 +1,5 @@
 package com.jieyangjiancai.zwj.ui;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 import com.jieyangjiancai.zwj.R;
 import com.jieyangjiancai.zwj.base.BaseActivity;
 import com.jieyangjiancai.zwj.network.URLs;
+import com.umeng.analytics.MobclickAgent;
 
 public class AboutActivity extends BaseActivity implements OnClickListener {
 	private RelativeLayout mLayoutProgress;
@@ -84,6 +84,20 @@ public class AboutActivity extends BaseActivity implements OnClickListener {
 			finish();
 			break;
 		}
+	}
+	
+	@Override
+	protected void onResume() {
+	    // TODO Auto-generated method stub
+	    super.onResume();
+	    MobclickAgent.onResume(this);
+	}
+	
+	@Override
+	protected void onPause() {
+	    // TODO Auto-generated method stub
+	    super.onPause();
+	    MobclickAgent.onPause(this);
 	}
 	
 }

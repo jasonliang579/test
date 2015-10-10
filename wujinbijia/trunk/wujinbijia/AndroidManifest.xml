@@ -176,6 +176,10 @@
         <meta-data
             android:name="XG_V2_SECRET_KEY"
             android:value="4b5a8de7da6d1e2410b3d8891587fec0" />
+        
+        <!-- 友盟 -->
+        <meta-data android:value="55f7ee6467e58eb9a8000596" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="test" android:name="UMENG_CHANNEL"/>
     </application>
 
     <!-- 【必须】 信鸽SDK所需权限 -->
@@ -203,4 +207,11 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    
+    <!-- 友盟 -->
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    
 </manifest>

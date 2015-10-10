@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.jieyangjiancai.zwj.R;
+import com.umeng.analytics.MobclickAgent;
 
 public class GuideActivity extends Activity implements OnClickListener, OnPageChangeListener {
 	private RelativeLayout mLayoutProgress;
@@ -156,5 +157,17 @@ public class GuideActivity extends Activity implements OnClickListener, OnPageCh
 			break;
 		}
 	}
-	
+	@Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

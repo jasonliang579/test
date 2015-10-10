@@ -42,6 +42,7 @@ import com.jieyangjiancai.zwj.ui.views.ShowZoomView;
 import com.jieyangjiancai.zwj.views.PullToRefreshView;
 import com.jieyangjiancai.zwj.views.PullToRefreshView.OnFooterRefreshListener;
 import com.jieyangjiancai.zwj.views.PullToRefreshView.OnHeaderRefreshListener;
+import com.umeng.analytics.MobclickAgent;
 
 public class IndustryMessageActivity extends Activity implements OnClickListener {
 	private String ORDER_COUNT_PER_PAGE = ConfigUtil.mPageSize;
@@ -475,4 +476,18 @@ public class IndustryMessageActivity extends Activity implements OnClickListener
 			}
 		}
 	}
+	
+	@Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

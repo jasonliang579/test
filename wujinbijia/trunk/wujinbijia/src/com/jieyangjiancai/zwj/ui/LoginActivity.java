@@ -28,6 +28,7 @@ import com.jieyangjiancai.zwj.config.ConfigUtil;
 import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.UserLogin;
 import com.jieyangjiancai.zwj.network.entity.VerifyCode;
+import com.umeng.analytics.MobclickAgent;
 
 public class LoginActivity extends Activity implements OnClickListener {
 
@@ -283,4 +284,18 @@ public class LoginActivity extends Activity implements OnClickListener {
 			task = null;
 		}
 	}
+	
+	@Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

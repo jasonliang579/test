@@ -18,6 +18,7 @@ import com.jieyangjiancai.zwj.ui.GetOrderMakePriceActivity;
 import com.jieyangjiancai.zwj.ui.GetOrderMyPriceActivity;
 import com.jieyangjiancai.zwj.ui.QueryOrderActivity;
 import com.jieyangjiancai.zwj.ui.QueryOrderDetailPriceActivity;
+import com.umeng.analytics.MobclickAgent;
 
 import android.app.ActivityManager;
 import android.app.AlertDialog;
@@ -50,6 +51,7 @@ public class BaseFragmentActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		registerReceiver();
+		MobclickAgent.onResume(this);
 	}
 
 	@Override
@@ -60,6 +62,7 @@ public class BaseFragmentActivity extends FragmentActivity {
 			unregisterReceiver(updateListViewReceiver);
 			updateListViewReceiver = null;
 		}
+		MobclickAgent.onPause(this);
 	}
 
 	private void registerReceiver() {

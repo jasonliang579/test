@@ -53,6 +53,7 @@ import com.jieyangjiancai.zwj.config.ConfigUtil;
 import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.URLs;
 import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo;
+import com.umeng.analytics.MobclickAgent;
 
 public class MainActivityNew extends BaseFragmentActivity implements OnClickListener  {
 	private Context mContext;
@@ -95,6 +96,8 @@ public class MainActivityNew extends BaseFragmentActivity implements OnClickList
 				// TODO Auto-generated method stub
 			}
 		});
+		
+		MobclickAgent.updateOnlineConfig(this);
     }
 	
 	private void Init()
