@@ -267,6 +267,13 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 
 	// 上传报价明细
 	private void UploadPriceDetail() {
+		
+		String price = ((EditText) findViewById(R.id.edit_my_price)).getText().toString();
+		if(price.equals("") || price.equals("0")){//先判断价格
+			ToastMessage.show(this, "请输入有效的价格");
+			mLayoutProgress.setVisibility(View.INVISIBLE);
+			return;
+		}
 		if (mFiles.size() <= 0) {
 			ToastMessage.show(this, "请上传报价明细照片。");
 			mLayoutProgress.setVisibility(View.INVISIBLE);
