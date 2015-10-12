@@ -8,7 +8,7 @@
 	    android:layout_height="fill_parent" 
 	    android:orientation="vertical">
 	    
-	    <include layout="@layout/title_bar" android:layout_height="50dip"/>
+	    <include layout="@layout/title_bar" />
 	    
 	    <!-- 
 	    <ScrollView

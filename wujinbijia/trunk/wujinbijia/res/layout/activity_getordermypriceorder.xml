@@ -9,7 +9,7 @@
 		android:orientation="vertical"
 		android:background="#ffeeeeee">
 	    
-		<include layout="@layout/title_bar" android:layout_height="50dip"/>
+		<include layout="@layout/title_bar" />
 		
 		<com.jieyangjiancai.zwj.views.PullToRefreshView
 	        android:id="@+id/pull_refresh_view"

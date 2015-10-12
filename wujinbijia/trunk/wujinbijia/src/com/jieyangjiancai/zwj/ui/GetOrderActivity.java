@@ -451,7 +451,7 @@ public class GetOrderActivity extends BaseActivity implements OnClickListener {
 				{
 					String str = "已有"+orderItem.price_count+"人报价";
 			        SpannableStringBuilder style=new SpannableStringBuilder(str); 
-			        style.setSpan(new ForegroundColorSpan(Color.RED), 2, 3,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE ); 
+			        style.setSpan(new ForegroundColorSpan(Color.RED), 2, 2 + orderItem.price_count.length(),Spannable.SPAN_EXCLUSIVE_EXCLUSIVE ); 
 			        vh.textMakePriceCount.setText(style);
 			        vh.textMakePriceCount.setVisibility(View.VISIBLE);
 				}

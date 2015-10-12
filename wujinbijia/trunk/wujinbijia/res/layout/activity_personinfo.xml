@@ -3,12 +3,25 @@
     android:layout_width="fill_parent"  
     android:layout_height="fill_parent"  
     android:orientation="vertical">  
+    
+    
+    
 	<LinearLayout
 	    android:layout_width="fill_parent"  
 	    android:layout_height="fill_parent"  
 	    android:orientation="vertical"  >  
 	    
-	    <include layout="@layout/title_bar" android:layout_height="50dip"/>
+	    <include layout="@layout/title_bar" />
+	    
+	    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+	    
+	    <LinearLayout
+	    android:layout_width="fill_parent"  
+	    android:layout_height="fill_parent"  
+	    android:orientation="vertical"  > 
 	    
 	    <LinearLayout
 	        android:layout_width="fill_parent"  
@@ -227,6 +240,70 @@
 	    		android:hint="请输入您的公司/门店所在的详情地址"/>
 	    </LinearLayout>
 		
+	    <!-- 公司介绍 -->
+		    <RelativeLayout 
+		    	android:id="@+id/pens_layout_company"
+		        android:layout_width="fill_parent"  
+		    	android:layout_height="45dip"  
+		    	android:layout_marginTop="12dip"
+		    	android:background="#ffffffff">
+		        <TextView 
+		            android:layout_width="wrap_content"  
+		    		android:layout_height="wrap_content" 
+		    		android:layout_marginLeft="15dip"
+		    		android:layout_centerVertical="true"
+		    		android:text="公司介绍"
+		    		android:textSize="16sp"/>
+		        <ImageView 
+		            android:layout_width="30dip"  
+		    		android:layout_height="wrap_content"
+		    		android:layout_centerVertical="true"
+		    		android:layout_alignParentRight="true"
+		    		android:src="@drawable/more"/>
+		    </RelativeLayout>
+		    
+		    <RelativeLayout 
+		    	android:id="@+id/pens_layout_business"
+		        android:layout_width="fill_parent"  
+		    	android:layout_height="45dip"  
+		    	android:layout_marginTop="12dip"
+		    	android:background="#ffffffff">
+		        <TextView 
+		            android:layout_width="wrap_content"  
+		    		android:layout_height="wrap_content" 
+		    		android:layout_marginLeft="15dip"
+		    		android:layout_centerVertical="true"
+		    		android:text="营业执照"
+		    		android:textSize="16sp"/>
+		        <ImageView 
+		            android:layout_width="30dip"  
+		    		android:layout_height="wrap_content"
+		    		android:layout_centerVertical="true"
+		    		android:layout_alignParentRight="true"
+		    		android:src="@drawable/more"/>
+		    </RelativeLayout>
+		    
+		    <RelativeLayout 
+		    	android:id="@+id/pens_layout_optrating"
+		        android:layout_width="fill_parent"  
+		    	android:layout_height="45dip"  
+		    	android:layout_marginTop="12dip"
+		    	android:background="#ffffffff">
+		        <TextView 
+		            android:layout_width="wrap_content"  
+		    		android:layout_height="wrap_content" 
+		    		android:layout_marginLeft="15dip"
+		    		android:layout_centerVertical="true"
+		    		android:text="经营商品"
+		    		android:textSize="16sp"/>
+		        <ImageView 
+		            android:layout_width="30dip"  
+		    		android:layout_height="wrap_content"
+		    		android:layout_centerVertical="true"
+		    		android:layout_alignParentRight="true"
+		    		android:src="@drawable/more"/>
+		    </RelativeLayout>
+		    
 	    <LinearLayout
 	        android:layout_width="fill_parent"  
 		    android:layout_height="wrap_content"
@@ -276,6 +353,8 @@
 		    android:text="确定"
 		    android:textColor="#ffffffff"/>
 	    
+	    </LinearLayout>
+	    </ScrollView>
 	</LinearLayout>  
 	
 	<include layout="@layout/progress_bar" />

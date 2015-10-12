@@ -2,6 +2,8 @@ package com.jieyangjiancai.zwj.network;
 
 import java.io.Serializable;
 
+import com.jieyangjiancai.zwj.config.BuildConfig;
+
 /**
  * 服务器URL 接口
  * 
@@ -23,9 +25,9 @@ public class URLs implements Serializable {
 	public final static String HTTP = "http://";
 	public final static String HTTPS = "https://";
 	public final static String URL_SPLITTER = "/";
-	 
-	public final static String URL_API_HOST = HTTP + HOST_RELEASE + URL_SPLITTER;
-	public final static String URL_API_HOST_WEB = HTTP + HOST_WEB_RELEASE + URL_SPLITTER;
+	
+	public final static String URL_API_HOST = HTTP + (BuildConfig.deBug ? HOST_DEV : HOST_RELEASE) + URL_SPLITTER;
+	public final static String URL_API_HOST_WEB = HTTP + (BuildConfig.deBug ? HOST_WEB_DEV : HOST_WEB_RELEASE) + URL_SPLITTER;
 
 	// tasker action
 	public final static String APP_UPDATE = URL_API_HOST + "/intf/appVersion!checkNeedUpdate.action";
