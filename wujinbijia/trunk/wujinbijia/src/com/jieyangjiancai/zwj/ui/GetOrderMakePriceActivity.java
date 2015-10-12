@@ -3,6 +3,8 @@ package com.jieyangjiancai.zwj.ui;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -274,6 +276,15 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 			mLayoutProgress.setVisibility(View.INVISIBLE);
 			return;
 		}
+		
+		try {
+			Double.parseDouble(price);//强转 ，失败的话，代表用户输入错误 
+		} catch (Exception e) {
+			ToastMessage.show(this, "请输入有效的价格");
+			mLayoutProgress.setVisibility(View.INVISIBLE);
+			return;
+		}
+		
 		if (mFiles.size() <= 0) {
 			ToastMessage.show(this, "请上传报价明细照片。");
 			mLayoutProgress.setVisibility(View.INVISIBLE);
@@ -312,7 +323,8 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 						EditText edit = (EditText) findViewById(R.id.edit_my_price);
 						EditText editRemark = (EditText) findViewById(R.id.edit_remark);
 						//mEditDeliverPlace = (EditText) findViewById(R.id.edit_deliver_place);
-						String price = edit.getText().toString();
+						
+						String price = getSubDian(edit.getText().toString());
 						String remark = editRemark.getText().toString();
 						String user_name = ConfigUtil.mUserName;
 						String order_message_id = mOrderMessageId;
@@ -331,7 +343,16 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 			}
 		};
 	}
-
+	/**
+	 * 返回小数点后两位
+	 * @param s
+	 * @return
+	 */
+	public String getSubDian(String s){
+		int index = s.indexOf(".");
+		int len = s.length() - index;
+		return s.substring(0, index == -1 ? s.length() : (len) > 2 ? index + 3 : index + (len));
+	}
 	private Response.ErrorListener reqUploadErrorListener() {
 		return new Response.ErrorListener() {
 			@Override
