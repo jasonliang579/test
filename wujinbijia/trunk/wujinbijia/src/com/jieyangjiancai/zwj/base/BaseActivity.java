@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.jieyangjiancai.zwj.R;
 import com.jieyangjiancai.zwj.WJApplication;
 import com.jieyangjiancai.zwj.config.ConfigUtil;
 import com.jieyangjiancai.zwj.data.OrderItem;
@@ -18,6 +19,10 @@ import com.jieyangjiancai.zwj.ui.GetOrderMyPriceActivity;
 import com.jieyangjiancai.zwj.ui.MainActivityNew;
 import com.jieyangjiancai.zwj.ui.QueryOrderActivity;
 import com.jieyangjiancai.zwj.ui.QueryOrderDetailPriceActivity;
+import com.jieyangjiancai.zwj.ui.views.ShowZoomView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.umeng.analytics.MobclickAgent;
 
 import android.app.Activity;
@@ -32,6 +37,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
 
 public class BaseActivity extends Activity {
 	private wujinReceiver updateListViewReceiver;
@@ -39,13 +48,45 @@ public class BaseActivity extends Activity {
 	private static OrderMessage mOrderMessage;
 	private static String mType = "";
 	
+	protected ShowZoomView mShowZoomView;
+	protected ImageLoader imageLoader = ImageLoader.getInstance();
+	protected DisplayImageOptions options , optionsRound;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		
 		mContext = this;
+		mShowZoomView = new ShowZoomView(this);//查看大图
+		
+		options = new DisplayImageOptions.Builder()
+        .showImageForEmptyUri(R.drawable.avatar_off).showImageOnFail(R.drawable.avatar_off)
+        .cacheInMemory(true).cacheOnDisc(true).displayer(new RoundedBitmapDisplayer(5))
+        .build();
+		optionsRound = new DisplayImageOptions.Builder()
+        .showImageForEmptyUri(R.drawable.avatar_off).showImageOnFail(R.drawable.avatar_off)
+        .cacheInMemory(true).cacheOnDisc(true).displayer(new RoundedBitmapDisplayer(5))
+        .displayer(new RoundedBitmapDisplayer(360))//设置圆角
+        .build();
 	}
-
+	
+	
+	/**
+	 * 
+	 * @return 返回API请求类
+	 */
+	protected BackendDataApi getBackendDataApi(){
+	    return ((WJApplication) this.getApplicationContext()).getHttpRequest();
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if (mShowZoomView.onKeyDown(keyCode, event) == true)
+            return true;
+        return super.onKeyDown(keyCode, event);
+	}
+	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -64,7 +105,11 @@ public class BaseActivity extends Activity {
 		}
 		MobclickAgent.onPause(this);
 	}
-
+	
+	public void titleBack(View view){
+	    finish();
+	}
+	
 	private void registerReceiver() {
 		// 0.注册数据更新监听器
 		if (updateListViewReceiver == null) {

@@ -24,6 +24,7 @@ import com.jieyangjiancai.zwj.common.KMLog;
 import com.jieyangjiancai.zwj.common.ToastMessage;
 import com.jieyangjiancai.zwj.common.XGPushRegister;
 import com.jieyangjiancai.zwj.common.sysUtils;
+import com.jieyangjiancai.zwj.config.BuildConfig;
 import com.jieyangjiancai.zwj.config.ConfigUtil;
 import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.UserLogin;
@@ -139,6 +140,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			public void onResponse(JSONObject response) {
 				try {
 					VerifyCode verifycode = VerifyCode.parse(response);
+					
 					if (verifycode.getError() == 0)
 						mVCode = verifycode;
 					else
@@ -146,6 +148,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 					
 					if (mVCode != null && ConfigUtil.IsTest){
 						mTextViewCode.setText(mVCode.getVcode());
+					}
+					if(BuildConfig.deBug){
+					    mTextViewCode.setText(mVCode.getVcode());
 					}
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block

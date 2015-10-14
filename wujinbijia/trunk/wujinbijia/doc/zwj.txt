@@ -6,8 +6,18 @@ password:zwj123
 zhaopin@jieyangjiancai.com
 Jiancai123
 
+13929514753
+569876
+
 任务
 https://tower.im/projects/f0a1520a857b488a8a8466dc29843ada/docs/3637e32d556041a7954912892319d318/
 
 https://tower.im/projects/10a4ce76619c41b8b8daa85ce7183416/
 https://tower.im/projects/10a4ce76619c41b8b8daa85ce7183416/todos/8498b8fb3327469e853be09649b6db0f/
+
+接单记录 ，重复加载。
+重复报价  --有加载动画，同时把那个按钮禁止
+
+{"data":{"address":"fo shan shi nang hai qu","area_code":"140930","area_name":"河曲县","block_count":"0","businesscard":{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007215711000138.jpg","picture_id":598,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007215711000138_t.jpg"},"businesscard_id":598,"city_code":"140900","city_name":"忻州市","company_certificate_arr":[{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007001856391168.jpg","picture_id":528,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007001856391168_t.jpg"},{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007001857511645.jpg","picture_id":529,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007001857511645_t.jpg"},{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007003819052222.jpg","picture_id":545,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007003819052222_t.jpg"},{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007003819609858.jpg","picture_id":546,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007003819609858_t.jpg"},{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007004459332042.jpg","picture_id":548,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007004459332042_t.jpg"},{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007004459506862.jpg","picture_id":549,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007004459506862_t.jpg"},{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007011301738651.jpg","picture_id":550,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007011301738651_t.jpg"}],"company_description":"近距离","company_name":"fo shan jie yang","credit_record":{},"deal_count":"0","phone":"13929514753","product_picture_arr":[{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007012831539244.jpg","picture_id":554,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007012831539244_t.jpg"},{"path":"http:\/\/dev.dianlanbijia.com\/images\/151007012832470479.jpg","picture_id":555,"thumb":"http:\/\/dev.dianlanbijia.com\/thumb\/images\/151007012832470479_t.jpg"}],"province_code":"140000","province_name":"山西省","total_rebate":"0.00","user_id":1,"user_name":"xiao qi 123","user_type":2},"error":"0","errormsg":""}
+
+

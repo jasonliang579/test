@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.app.Application;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +27,10 @@ import com.jieyangjiancai.zwj.config.ConfigUtil;
 import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.VerifyCode;
 import com.jieyangjiancai.zwj.ui.LoginActivity;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 /**
  * 全局配置和网络访问
@@ -57,6 +62,8 @@ public class WJApplication extends Application {
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
+		initImageLoader(getApplicationContext());
+		
 		//账户信息
 		ConfigUtil.initConfig(getApplicationContext());
 		// 网络库
@@ -108,6 +115,17 @@ public class WJApplication extends Application {
 		int currentVersion = android.os.Build.VERSION.SDK_INT;
 		return currentVersion >= VersionCode;
 	}
-
-
+	//初始化Imageloader
+	public static void initImageLoader(Context context) {
+        // This configuration tuning is custom. You can tune every option, you
+        // may tune some of them, or you can create default configuration by
+        // ImageLoaderConfiguration.createDefault(this);
+        // method.
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                .threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory()
+                .discCacheFileNameGenerator(new Md5FileNameGenerator()).threadPoolSize(4)
+                .tasksProcessingOrder(QueueProcessingType.FIFO).writeDebugLogs().build();
+        // Initialize ImageLoader with configuration.
+        ImageLoader.getInstance().init(config);
+    }
 }

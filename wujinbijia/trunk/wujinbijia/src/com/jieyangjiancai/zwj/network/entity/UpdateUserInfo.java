@@ -1,5 +1,9 @@
 package com.jieyangjiancai.zwj.network.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,7 +29,15 @@ public class UpdateUserInfo extends BaseEntity {
 	private String provinceName;
 	private String userName;
 	private String userType;
+	private String company_description;
 	
+	public String getCompany_description() {
+        return company_description;
+    }
+    public void setCompany_description(String company_description) {
+        this.company_description = company_description;
+    }
+
 	public void setAddress(String str) {
 		this.address = str;
 	}
@@ -110,6 +122,44 @@ public class UpdateUserInfo extends BaseEntity {
 		return this.userType;
 	}	
 	
+	public List<CertificateArr> company_certificate_arr = new ArrayList<UpdateUserInfo.CertificateArr>();
+	
+	public List<CertificateArr> getCompany_certificate_arr() {
+        return company_certificate_arr;
+    }
+    public void setCompany_certificate_arr(List<CertificateArr> company_certificate_arr) {
+        this.company_certificate_arr = company_certificate_arr;
+    }
+
+    public static class CertificateArr{
+	    private String path;
+	    private String picture_id;
+	    private String thumb;
+	    
+	    public CertificateArr() {
+        }
+	    
+        public String getPath() {
+            return path;
+        }
+        public void setPath(String path) {
+            this.path = path;
+        }
+        public String getPicture_id() {
+            return picture_id;
+        }
+        public void setPicture_id(String picture_id) {
+            this.picture_id = picture_id;
+        }
+        public String getThumb() {
+            return thumb;
+        }
+        public void setThumb(String thumb) {
+            this.thumb = thumb;
+        }
+	    
+	}
+	
 	public static UpdateUserInfo parse(JSONObject response) throws JSONException {
 		//{"data":
 		//		{"address":"","area_code":"75504","area_name":"福田","businesscard_id":0,
@@ -156,6 +206,21 @@ public class UpdateUserInfo extends BaseEntity {
 		entity.setUserName(str);
 		str = jo.optString("user_type", "");
 		entity.setUserType(str);
+		str = jo.optString("company_description" ,"");
+		entity.setCompany_description(str);
+		
+		if(jo.has("company_certificate_arr")){
+		    JSONArray cerArr = jo.getJSONArray("company_certificate_arr");
+		    for (int i = 0; i < cerArr.length(); i++) {
+		        CertificateArr arr = new CertificateArr();
+		        JSONObject cer = cerArr.getJSONObject(i);
+		        arr.setPath(cer.optString("path"));
+		        arr.setThumb(cer.optString("thumb"));
+		        arr.setPicture_id(cer.optString("picture_id"));
+		        entity.company_certificate_arr.add(arr);
+            }
+		}
+		
 		return entity;
 
 	}

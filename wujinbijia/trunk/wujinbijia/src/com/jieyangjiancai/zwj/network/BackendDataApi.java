@@ -112,7 +112,7 @@ public class BackendDataApi {
 	 * @param errorListener
 	 */
 	public static void updateInfo(String user_id, String token, String user_name, String company_name, String province_code,
-			String city_code, String area_code, String address, String business_card, String user_type,
+			String city_code, String area_code, String address, String business_card, String user_type, String company_description,
 			Response.Listener<JSONObject> listener, ErrorListener errorListener) {
 
 		String url = URLs.USER_UPDATE_INFO;
@@ -127,6 +127,7 @@ public class BackendDataApi {
 		builder.appendQueryParameter("address", address);
 		builder.appendQueryParameter("business_card", business_card);
 		builder.appendQueryParameter("user_type", user_type);
+		builder.appendQueryParameter("company_description", company_description);
 		mHttpRequestUtil.HttpRequest(builder, listener, errorListener);
 
 	}
@@ -573,7 +574,15 @@ public class BackendDataApi {
 
 		mHttpRequestUtil.uploadFile(file, token, listener, errorListener);
 	}
-
+	/**
+	 * 
+	 * @param file
+	 * @param userId
+	 * @param token
+	 * @param type       图片类型（1-名片，2-照片下单，3-付款凭证，4-上传报价明细，5-行业圈，6-投诉建议，7-公司证件，8-产品图片）
+	 * @param listener
+	 * @param errorListener
+	 */
 	public void uploadImage(File file, String userId, String token, String type, Response.Listener<JSONObject> listener,
 			ErrorListener errorListener) {
 

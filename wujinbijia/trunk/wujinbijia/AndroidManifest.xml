@@ -59,6 +59,8 @@
 		<activity android:name=".ui.MessageListActivity" android:screenOrientation="portrait" />
 		<activity android:name=".ui.AddMessageActivity" android:screenOrientation="portrait" />
 		<activity android:name=".ui.GetOrderHelpActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.ComPanyEditActivity" android:screenOrientation="portrait" />
+		<activity android:name=".ui.BusinessActivity" android:screenOrientation="portrait" />
 		
 			
 		<activity
@@ -163,19 +165,13 @@
         </receiver>
 
         <!-- 【必须】 请修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
-        <meta-data
-            android:name="XG_V2_ACCESS_ID"
-            android:value="2100144550" />
+        <meta-data            android:name="XG_V2_ACCESS_ID"            android:value="2100144550" />
         <!-- 【必须】 请修改为APP的AccessKey，“A”开头的12位字符串，中间没空格 -->
-        <meta-data
-            android:name="XG_V2_ACCESS_KEY"
-            android:value="A1866XNHB9VR" />
+        <meta-data            android:name="XG_V2_ACCESS_KEY"            android:value="A1866XNHB9VR" />
         
         
         <!-- 【！！不需要添加！！】 此处的secretkey主要是为了Demo一键诊断用，实际APP不用添加，切记！ -->
-        <meta-data
-            android:name="XG_V2_SECRET_KEY"
-            android:value="4b5a8de7da6d1e2410b3d8891587fec0" />
+        <meta-data            android:name="XG_V2_SECRET_KEY"            android:value="4b5a8de7da6d1e2410b3d8891587fec0" />
         
         <!-- 友盟 -->
         <meta-data android:value="55f7ee6467e58eb9a8000596" android:name="UMENG_APPKEY"></meta-data>

@@ -79,6 +79,11 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 	
 	private RelativeLayout mLayoutProgress;
 	
+	private RelativeLayout pens_layout_company;
+	private RelativeLayout pens_layout_business;
+	
+	private String companyString = "";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -124,12 +129,19 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 		mImageUpload = (ImageView)findViewById(R.id.image_upload);
 		mImageUpload.setOnClickListener(this);
 		
+		pens_layout_company = (RelativeLayout)findViewById(R.id.pens_layout_company);//公司 介绍
+		pens_layout_company.setOnClickListener(this);
+		pens_layout_business = (RelativeLayout)findViewById(R.id.pens_layout_business);
+		pens_layout_business.setOnClickListener(this);
+		
 		if (ConfigUtil.mUserInfo != null)
 		{
 			UpdateUserInfo userInfo = ConfigUtil.mUserInfo;
 			mEditName.setText(userInfo.getUserName());
 			mEditCompany.setText(userInfo.getCompanyName());
 			mEditAddress.setText(userInfo.getAddress());
+			
+			companyString = userInfo.getCompany_description();//公司介绍
 			
 			mUserType = userInfo.getUserType();
 			if (mUserType.equals("1"))
@@ -456,7 +468,7 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 		 
 		 BackendDataApi bdApi = ((WJApplication)getApplicationContext()).getHttpRequest();
 		 bdApi.updateInfo(user_id, token, user_name, company_name, province_code,
-				 city_code, area_code, address, business_card, user_type,
+				 city_code, area_code, address, business_card, user_type, companyString ,
 				 reqPersonSuccessListener(), reqPersonErrorListener());
 	 }
 	 
@@ -543,7 +555,13 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 
 				break;
 			}
+			
+			case 10001 ://公司介绍返回
+			    companyString = data.getStringExtra(ComPanyEditActivity.EXTRA_EDS);
+			    break;
+			
 			}
+			
 		}
 
 		super.onActivityResult(requestCode, resultCode, data);
@@ -679,6 +697,15 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 			//SelectImage();
 			ConfigUtil.doPickPhotoAction(this);
 			break;
+		case R.id.pens_layout_company :
+		    Intent intent = new Intent(this , ComPanyEditActivity.class);
+		    intent.putExtra(ComPanyEditActivity.EXTRA_EDS, companyString);
+		    startActivityForResult(intent, 10001);
+		    break;
+		case R.id.pens_layout_business :
+		    Intent bus = new Intent(this , BusinessActivity.class);
+		    startActivity(bus);
+		    break;
 		}
 	}
 	

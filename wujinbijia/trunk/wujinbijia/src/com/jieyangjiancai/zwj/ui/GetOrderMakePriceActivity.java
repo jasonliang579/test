@@ -29,6 +29,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -68,6 +69,8 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 	private EditText mEditDeliverPlace;
 	private ShowZoomView mShowZoomView;
 	
+	private Button btn_my_offer;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -100,7 +103,8 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 //			}
 //		});
 
-		findViewById(R.id.btn_my_offer).setOnClickListener(this);
+		btn_my_offer = (Button)findViewById(R.id.btn_my_offer);
+		btn_my_offer.setOnClickListener(this);
 		findViewById(R.id.btn_phone).setOnClickListener(this);
 		findViewById(R.id.image_price_content1).setOnClickListener(this);
 		findViewById(R.id.image_price_content2).setOnClickListener(this);
@@ -172,6 +176,7 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 			break;
 
 		case R.id.btn_my_offer:
+		    btn_my_offer.setEnabled(false);
 			mLayoutProgress.setVisibility(View.VISIBLE);
 			// 上传报价明细
 			UploadPriceDetail();
@@ -359,6 +364,7 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 			public void onErrorResponse(VolleyError error) {
 				mLayoutProgress.setVisibility(View.INVISIBLE);
 				ToastMessage.show(GetOrderMakePriceActivity.this, "上传照片失败");
+				btn_my_offer.setEnabled(true);
 			}
 		};
 	}
@@ -396,6 +402,7 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 			public void onErrorResponse(VolleyError error) {
 				mLayoutProgress.setVisibility(View.INVISIBLE);
 				ToastMessage.show(GetOrderMakePriceActivity.this, "发布报价失败");
+				btn_my_offer.setEnabled(true);
 			}
 		};
 	}
@@ -526,7 +533,7 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-
+	
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (mShowZoomView.onKeyDown(keyCode, event) == true)
 			return true;

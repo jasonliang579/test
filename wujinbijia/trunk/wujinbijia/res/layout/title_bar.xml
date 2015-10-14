@@ -8,6 +8,7 @@
         android:layout_width="30dip"  
     	android:layout_height="30dip"
     	android:layout_centerVertical="true"
+    	android:onClick="titleBack"
     	android:src="@drawable/back"  />
     <TextView 
         android:id="@+id/title_bar_text"
