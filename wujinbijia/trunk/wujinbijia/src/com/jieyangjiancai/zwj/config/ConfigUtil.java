@@ -169,7 +169,23 @@ public class ConfigUtil {
 		});
 		builder.create().show();
 	}
-
+	
+	private static void doMyPicPhoto(){
+	    
+	}
+	
+	// 请求Gallery程序
+    private static void doPickPhotoFromGallery() {
+        try {
+            // Launch picker to choose photo for selected contact
+            final Intent intent = getPhotoPickIntent();
+            mActivity.startActivityForResult(intent, PHOTO_PICKED_WITH_DATA);
+        } catch (ActivityNotFoundException e) {
+            // Toast.makeText(this, R.string.photoPickerNotFoundText1,
+            // Toast.LENGTH_LONG).show();
+        }
+    }
+	
 	public static File GetPhotoFile() {
 		// return mCurrentPhotoFile;
 		File file = null;
@@ -218,17 +234,6 @@ public class ConfigUtil {
 		return dateFormat.format(date) + ".jpg";
 	}
 
-	// 请求Gallery程序
-	private static void doPickPhotoFromGallery() {
-		try {
-			// Launch picker to choose photo for selected contact
-			final Intent intent = getPhotoPickIntent();
-			mActivity.startActivityForResult(intent, PHOTO_PICKED_WITH_DATA);
-		} catch (ActivityNotFoundException e) {
-			// Toast.makeText(this, R.string.photoPickerNotFoundText1,
-			// Toast.LENGTH_LONG).show();
-		}
-	}
 
 	// 封装请求Gallery的intent
 	private static Intent getPhotoPickIntent() {
@@ -242,7 +247,12 @@ public class ConfigUtil {
 		// intent.putExtra("return-data", true);
 		return intent;
 	}
-	
+	/**
+	 * 压缩图片
+	 * @param context
+	 * @param fullPath
+	 * @return
+	 */
 	public static Bitmap getThumbnailBitmap(Context context,String fullPath) {
 		if (!StringUtils.isEmpty(fullPath)) {
 			// 存放照片的文件夹

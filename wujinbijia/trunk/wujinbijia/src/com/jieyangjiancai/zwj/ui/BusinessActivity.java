@@ -7,6 +7,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -21,7 +23,7 @@ import com.jieyangjiancai.zwj.utils.Util;
 public class BusinessActivity extends BaseActivity{
     
     private GridView bus_gridview;
-    private List list = new ArrayList();
+    private List<Comparable> list = new ArrayList<Comparable>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -42,6 +44,16 @@ public class BusinessActivity extends BaseActivity{
         }
         list.add(R.drawable.add_photo_order);
         bus_gridview.setAdapter(new Adpter(this));
+        
+        bus_gridview.setOnItemClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3) {
+                if(pos == list.size() -1 ){
+                    ConfigUtil.doPickPhotoAction(BusinessActivity.this);
+                }
+            }
+        });
     }
     
     
