@@ -39,6 +39,7 @@ import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.GetOrder;
 import com.jieyangjiancai.zwj.network.entity.MessageList;
 import com.jieyangjiancai.zwj.ui.GetOrderActivity.ViewHolder;
+import com.jieyangjiancai.zwj.utils.AppUtil;
 import com.jieyangjiancai.zwj.views.PullToRefreshView;
 import com.jieyangjiancai.zwj.views.PullToRefreshView.OnFooterRefreshListener;
 import com.jieyangjiancai.zwj.views.PullToRefreshView.OnHeaderRefreshListener;
@@ -140,6 +141,7 @@ public class AddMessageActivity extends BaseActivity implements OnClickListener 
 			
 		case R.id.btn_add_message:
 			AddMessage();
+			AppUtil.sendUmengOnEvent(this, "10004");
 			break;
 		}
 	}

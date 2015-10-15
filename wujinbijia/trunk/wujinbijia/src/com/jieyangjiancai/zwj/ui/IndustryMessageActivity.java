@@ -39,6 +39,7 @@ import com.jieyangjiancai.zwj.data.IndustryMessageItem;
 import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.IndustryMessage;
 import com.jieyangjiancai.zwj.ui.views.ShowZoomView;
+import com.jieyangjiancai.zwj.utils.AppUtil;
 import com.jieyangjiancai.zwj.views.PullToRefreshView;
 import com.jieyangjiancai.zwj.views.PullToRefreshView.OnFooterRefreshListener;
 import com.jieyangjiancai.zwj.views.PullToRefreshView.OnHeaderRefreshListener;
@@ -71,6 +72,7 @@ public class IndustryMessageActivity extends Activity implements OnClickListener
 		Init();
 		InitData();
 		mShowZoomView = new ShowZoomView(this);
+		AppUtil.sendUmengOnEvent(this, "10007");
 	}
 	
 	private void Init()

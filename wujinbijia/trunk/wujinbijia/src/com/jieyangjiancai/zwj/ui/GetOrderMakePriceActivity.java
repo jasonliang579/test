@@ -52,6 +52,7 @@ import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.CardId;
 import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo;
 import com.jieyangjiancai.zwj.ui.views.ShowZoomView;
+import com.jieyangjiancai.zwj.utils.AppUtil;
 
 public class GetOrderMakePriceActivity extends BaseActivity implements OnClickListener {
 	private ArrayList<ImageView> mImageList = new ArrayList<ImageView>();

@@ -34,6 +34,7 @@ import com.jieyangjiancai.zwj.config.ConfigUtil;
 import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.CardId;
 import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo;
+import com.jieyangjiancai.zwj.utils.AppUtil;
 
 public class QueryOrderActivity extends BaseActivity implements OnClickListener {
 
@@ -201,7 +202,7 @@ public class QueryOrderActivity extends BaseActivity implements OnClickListener 
 		mPhotoCount = 0;
 		BackendDataApi bdApi = ((WJApplication) this.getApplicationContext()).getHttpRequest();
 		bdApi.uploadImage(mFiles.get(mPhotoCount), userId, token, type, reqUploadSuccessListener(), reqUploadErrorListener());
-
+		AppUtil.sendUmengOnEvent(this, "10001");
 	}
 
 	private Response.Listener<JSONObject> reqUploadSuccessListener() {
@@ -472,6 +473,7 @@ public class QueryOrderActivity extends BaseActivity implements OnClickListener 
 
 		case R.id.title_bar_more_text: // 询单记录
 		{
+			AppUtil.sendUmengOnEvent(this, "10002");
 			Intent intent = new Intent(this, QueryOrderHistoryActivity.class);
 			this.startActivity(intent);
 			break;

@@ -13,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.toolbox.ImageLoader.ImageListener;
 import com.jieyangjiancai.zwj.common.XGPushRegister;
+import com.jieyangjiancai.zwj.utils.AppUtil;
 
 public class BackendDataApi {
 	private static HttpRequestUtil mHttpRequestUtil;
@@ -711,6 +712,7 @@ public class BackendDataApi {
 	//上传支付凭证
 	public static void UploadPayPhote(String user_id, String token, String picture_arr, String order_message_id, 
 			Response.Listener<JSONObject> listener, ErrorListener errorListener) {
+		
 		String url = URLs.UPLOAD_PAY_PHOTE;
 		Uri.Builder builder = Uri.parse(url).buildUpon();
 		builder.appendQueryParameter("user_id", user_id);

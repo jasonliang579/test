@@ -40,6 +40,7 @@ import com.jieyangjiancai.zwj.data.SupplierItem;
 import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.SupplierList;
 import com.jieyangjiancai.zwj.ui.views.ShowZoomView;
+import com.jieyangjiancai.zwj.utils.AppUtil;
 
 public class QueryOrderDetailPriceActivity extends BaseActivity implements OnClickListener {
 	private ArrayList<ImageView> mImageList = new ArrayList<ImageView>();
@@ -541,6 +542,7 @@ public class QueryOrderDetailPriceActivity extends BaseActivity implements OnCli
 		String supplier_id = supplierId;
 		BackendDataApi bdApi = ((WJApplication)this.getApplicationContext()).getHttpRequest();
 		bdApi.SelectSupplier(userId, token, order_message_id, supplier_id, reqSelectSuccessListener(), reqSelectErrorListener());
+		AppUtil.sendUmengOnEvent(this, "10006");
 	}
 	private Response.Listener<JSONObject> reqSelectSuccessListener() {
 		return new Response.Listener<JSONObject>() {

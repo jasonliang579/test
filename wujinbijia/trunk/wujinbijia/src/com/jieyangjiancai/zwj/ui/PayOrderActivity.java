@@ -31,6 +31,7 @@ import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.CardId;
 import com.jieyangjiancai.zwj.network.entity.Rebate;
 import com.jieyangjiancai.zwj.network.entity.UserInfo;
+import com.jieyangjiancai.zwj.utils.AppUtil;
 
 public class PayOrderActivity extends BaseActivity implements OnClickListener {
 	private RelativeLayout mLayoutProgress;
@@ -225,6 +226,7 @@ public class PayOrderActivity extends BaseActivity implements OnClickListener {
 		String token = ConfigUtil.mToken;
 		BackendDataApi bdApi = ((WJApplication)this.getApplicationContext()).getHttpRequest();
 		bdApi.UploadPayPhote(userId, token, picture_arr, order_message_id, reqPaySuccessListener(), reqPayErrorListener());
+		AppUtil.sendUmengOnEvent(this, "10005");
 	}
 	
 	private Response.Listener<JSONObject> reqPaySuccessListener() {
