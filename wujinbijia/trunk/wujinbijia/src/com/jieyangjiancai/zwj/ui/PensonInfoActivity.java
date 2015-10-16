@@ -82,7 +82,8 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 	private RelativeLayout pens_layout_company;
 	private RelativeLayout pens_layout_business;
 	
-	private String companyString = "";
+	private String companyString = "";//记录返回的公司介绍
+	private String businessString = "";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -468,7 +469,7 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 		 
 		 BackendDataApi bdApi = ((WJApplication)getApplicationContext()).getHttpRequest();
 		 bdApi.updateInfo(user_id, token, user_name, company_name, province_code,
-				 city_code, area_code, address, business_card, user_type, companyString ,
+				 city_code, area_code, address, business_card, user_type, companyString , businessString ,
 				 reqPersonSuccessListener(), reqPersonErrorListener());
 	 }
 	 
@@ -559,6 +560,9 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 			case 10001 ://公司介绍返回
 			    companyString = data.getStringExtra(ComPanyEditActivity.EXTRA_EDS);
 			    break;
+			case 10002 :
+				businessString = data.getStringExtra(BusinessActivity.EXTRA_ID);
+				break;
 			
 			}
 			
@@ -566,38 +570,6 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
-	/*
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {  
-        if (resultCode == Activity.RESULT_OK) {  
-            Uri uri = data.getData();  
-            Log.e("wujin", "uri="+uri.toString());  
-            //ContentResolver cr = this.getContentResolver();  
-            try {  
-                //Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(uri));  
-                
-                String[] proj = {MediaStore.Images.Media.DATA};
-                //好像是android多媒体数据库的封装接口，具体的看Android文档
-                Cursor cursor = this.managedQuery(uri, proj, null, null, null); 
-                //按我个人理解 这个是获得用户选择的图片的索引值
-                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                //将光标移至开头 ，这个很重要，不小心很容易引起越界
-                cursor.moveToFirst();
-                //最后根据索引值获取图片路径
-                String path = cursor.getString(column_index);
-                File file = new File(path);
-                
-                UploadImage(file);
-                Log.d("wujin", "path="+path);  
-            } catch (Exception e) {  
-                Log.e("wujin", e.getMessage(),e);  
-            }
-        }  
-        
-        super.onActivityResult(requestCode, resultCode, data);  
-    }
-    */
 	
 	public void UploadImage(File file)
 	{
@@ -704,7 +676,7 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 		    break;
 		case R.id.pens_layout_business :
 		    Intent bus = new Intent(this , BusinessActivity.class);
-		    startActivity(bus);
+		    startActivityForResult(bus , 10002);
 		    break;
 		}
 	}

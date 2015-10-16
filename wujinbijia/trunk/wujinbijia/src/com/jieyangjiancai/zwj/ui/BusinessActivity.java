@@ -42,6 +42,10 @@ public class BusinessActivity extends BaseActivity{
     private List<Comparable> list = new ArrayList<Comparable>();
     
     private RelativeLayout mLayoutProgress;
+    
+    private int uploadPathSize = 1;//记录上传图片 的张数
+    private String upImageId = "";//记录当前图片 的ID
+    public static final String EXTRA_ID = "extra_id"; 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -62,6 +66,7 @@ public class BusinessActivity extends BaseActivity{
         
         for (CertificateArr certificateArr : l) {
             list.add(certificateArr.getThumb());
+            upImageId = upImageId + certificateArr.getPicture_id() + ",";
         }
         list.add(R.drawable.add_photo_order);
         bus_gridview.setAdapter(new Adpter(this));
@@ -93,6 +98,7 @@ public class BusinessActivity extends BaseActivity{
                     ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
                     return;
                 }
+                uploadPathSize = paths.size();
                for (int i = 0; i < paths.size(); i++) {
                    String fullPath = paths.get(i);
                    
@@ -122,7 +128,7 @@ public class BusinessActivity extends BaseActivity{
                 }else{
                     return;
                 }
-                
+                uploadPathSize = 1;
                 File file = new File(fullPath);
                 UploadImage(file);
 
@@ -148,7 +154,6 @@ public class BusinessActivity extends BaseActivity{
         return new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                mLayoutProgress.setVisibility(View.INVISIBLE);
                 
                 try {
                     CardId cardId = CardId.parse(response);
@@ -157,8 +162,21 @@ public class BusinessActivity extends BaseActivity{
                         ToastMessage.show(BusinessActivity.this, "上传营业执照失败");
                         return;
                     }else{
-                        ToastMessage.show(BusinessActivity.this, "上传营业执照成功,请保存用户资料。");
-                        finish();
+                    	uploadPathSize--;
+                    	
+                    	upImageId = upImageId + cardId.getPhotoId();
+                		if(uploadPathSize != 0)
+                			upImageId = upImageId + ",";
+                    	
+                    	if(uploadPathSize == 0){
+                    		mLayoutProgress.setVisibility(View.INVISIBLE);
+                    		ToastMessage.show(BusinessActivity.this, "上传营业执照成功,请保存用户资料。");
+                    		Intent data = new Intent();
+                    		data.putExtra(EXTRA_ID, upImageId);
+                    		setResult(RESULT_OK, data);
+                            finish();
+                    	}
+                        
                     }
                     //mEditIdCard.setText(cardId.getPhotoId());
                 } catch (Exception e) {

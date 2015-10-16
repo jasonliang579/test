@@ -8,6 +8,11 @@
     
     <include layout="@layout/title_bar"/>
 	
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    
     <GridView 
         android:id="@+id/bus_gridview"
         android:layout_width="match_parent"
@@ -21,4 +26,5 @@
         ></GridView>
     
     <include layout="@layout/progress_bar" />
+    </RelativeLayout>
 </LinearLayout>
