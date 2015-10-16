@@ -62,7 +62,13 @@
 		<activity android:name=".ui.ComPanyEditActivity" android:screenOrientation="portrait" />
 		<activity android:name=".ui.BusinessActivity" android:screenOrientation="portrait" />
 		
-			
+	 	<activity
+            android:name="com.likebamboo.imagechooser.ui.PhotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.likebamboo.imagechooser.ui.ImageListActivity"
+            android:screenOrientation="portrait" />
+        
 		<activity
 			 android:name="com.mob.tools.MobUIShell"
 			 android:theme="@android:style/Theme.Translucent.NoTitleBar"

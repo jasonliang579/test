@@ -20,4 +20,5 @@
         android:padding="10dp"
         ></GridView>
     
+    <include layout="@layout/progress_bar" />
 </LinearLayout>

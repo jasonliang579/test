@@ -31,6 +31,7 @@ import com.jieyangjiancai.zwj.common.ImageUtils;
 import com.jieyangjiancai.zwj.common.StringUtils;
 import com.jieyangjiancai.zwj.common.ToastMessage;
 import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo;
+import com.likebamboo.imagechooser.ui.PhotoActivity;
 
 public class ConfigUtil {
 	public static boolean IsTest = false;
@@ -154,7 +155,8 @@ public class ConfigUtil {
 
 				}
 				case 1:
-					doPickPhotoFromGallery();// 从相册中去获取
+//					doPickPhotoFromGallery();// 从相册中去获取
+				    doMyPicPhoto(3);
 					break;
 				}
 			}
@@ -170,8 +172,10 @@ public class ConfigUtil {
 		builder.create().show();
 	}
 	
-	private static void doMyPicPhoto(){
-	    
+	private static void doMyPicPhoto(int max){
+	    Intent intent = new Intent(mActivity , PhotoActivity.class);
+	    intent.putExtra(PhotoActivity.EXTRA_MAX, max);
+	    mActivity.startActivityForResult(intent, PHOTO_PICKED_WITH_DATA);
 	}
 	
 	// 请求Gallery程序

@@ -1,9 +1,16 @@
 package com.jieyangjiancai.zwj.ui;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
+
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +19,29 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.jieyangjiancai.zwj.R;
+import com.jieyangjiancai.zwj.WJApplication;
 import com.jieyangjiancai.zwj.base.BaseActivity;
+import com.jieyangjiancai.zwj.common.ImageUtils;
+import com.jieyangjiancai.zwj.common.ToastMessage;
 import com.jieyangjiancai.zwj.config.ConfigUtil;
+import com.jieyangjiancai.zwj.network.BackendDataApi;
+import com.jieyangjiancai.zwj.network.entity.CardId;
 import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo.CertificateArr;
 import com.jieyangjiancai.zwj.utils.Util;
+import com.likebamboo.imagechooser.ui.PhotoActivity;
 
 public class BusinessActivity extends BaseActivity{
     
     private GridView bus_gridview;
     private List<Comparable> list = new ArrayList<Comparable>();
+    
+    private RelativeLayout mLayoutProgress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -34,6 +52,9 @@ public class BusinessActivity extends BaseActivity{
     }
 
     private void initView() {
+        mLayoutProgress = (RelativeLayout) findViewById(R.id.layout_progress_bar);
+        mLayoutProgress.setVisibility(View.INVISIBLE);
+        
         bus_gridview = (GridView)findViewById(R.id.bus_gridview);
         ((TextView) findViewById(R.id.title_bar_text)).setText("营业执照");        
         
@@ -56,7 +77,108 @@ public class BusinessActivity extends BaseActivity{
         });
     }
     
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+
+            switch (requestCode) {
+            case ConfigUtil.PHOTO_PICKED_WITH_DATA: {// 调用Gallery返回的
+
+                if (data == null) {
+                    ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
+                    return;
+                }
+                ArrayList<String> paths = data.getStringArrayListExtra(PhotoActivity.EXTRA_PATH);
+                if(paths == null && paths.size() < 1){
+                    ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
+                    return;
+                }
+               for (int i = 0; i < paths.size(); i++) {
+                   String fullPath = paths.get(i);
+                   
+                   Bitmap bitmap = ConfigUtil.getThumbnailBitmap(this, fullPath);
+                   if(bitmap != null){
+                       fullPath = ConfigUtil.getThumbFilePath();
+                   }else{
+                       return;
+                   }
+
+                   File file = new File(fullPath);
+                   UploadImage(file);
+                   
+                   if(bitmap.isRecycled())
+                       bitmap.recycle();
+               }
+                
+
+                break;
+            }
+            case ConfigUtil.CAMERA_WITH_DATA: {// 照相机程序返回
+
+                String fullPath = ConfigUtil.getPhotoPath();
+                Bitmap bitmap = ConfigUtil.getThumbnailBitmap(this, fullPath);
+                if(bitmap != null){
+                    fullPath = ConfigUtil.getThumbFilePath();
+                }else{
+                    return;
+                }
+                
+                File file = new File(fullPath);
+                UploadImage(file);
+
+                break;
+            }
+            
+            }
+            
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
     
+    public void UploadImage(File file)
+    {
+        mLayoutProgress.setVisibility(View.VISIBLE);
+        
+         String type = "7";
+         BackendDataApi bdApi = ((WJApplication)getApplicationContext()).getHttpRequest();
+         bdApi.uploadImage(file, ConfigUtil.mUserId, ConfigUtil.mToken, type, reqUploadSuccessListener(), reqUploadErrorListener());
+    }
+    public Response.Listener<JSONObject> reqUploadSuccessListener() {
+        return new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                mLayoutProgress.setVisibility(View.INVISIBLE);
+                
+                try {
+                    CardId cardId = CardId.parse(response);
+                    if(cardId.getError() != 0)
+                    {
+                        ToastMessage.show(BusinessActivity.this, "上传营业执照失败");
+                        return;
+                    }else{
+                        ToastMessage.show(BusinessActivity.this, "上传营业执照成功,请保存用户资料。");
+                        finish();
+                    }
+                    //mEditIdCard.setText(cardId.getPhotoId());
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        };
+    }
+    public Response.ErrorListener reqUploadErrorListener() {
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //String t = error.getMessage();
+                //ToastMessage.show(PensonInfoActivity.this, t);
+                mLayoutProgress.setVisibility(View.INVISIBLE);
+                ToastMessage.show(BusinessActivity.this, "上传营业执照失败。");
+            }
+        };
+    }
     
     class Adpter extends BaseAdapter{
         private Context context;
