@@ -23,6 +23,7 @@ import com.likebamboo.imagechooser.R;
 import com.likebamboo.imagechooser.loader.LocalImageLoader;
 import com.likebamboo.imagechooser.loader.LocalImageLoader.ImageCallBack;
 import com.likebamboo.imagechooser.ui.ImageListActivity;
+import com.likebamboo.imagechooser.ui.PhotoActivity;
 import com.likebamboo.imagechooser.utils.Util;
 import com.likebamboo.imagechooser.widget.MyImageView;
 
@@ -153,8 +154,8 @@ public class ImageListAdapter extends BaseAdapter {
         if (mSelectedList.contains(path)) {
             return true;
         }
-        if(mSelectedList.size() >= 9){
-            Toast.makeText(mContext, "最多支持9张图标", Toast.LENGTH_SHORT).show();
+        if(mSelectedList.size() >= PhotoActivity.maxSelected){
+            Toast.makeText(mContext, "最多支持" + PhotoActivity.maxSelected + "张图片", Toast.LENGTH_SHORT).show();
             return false;
         }
             

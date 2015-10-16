@@ -67,6 +67,8 @@ public class PhotoActivity extends BaseActivity implements OnItemClickListener {
     
     private Button btn_option;
     
+    public static int maxSelected = 3;
+    public static String EXTRA_MAX = "max";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +81,8 @@ public class PhotoActivity extends BaseActivity implements OnItemClickListener {
         title.setText(getResources().getString(R.string.activity_title));
         btn_option = (Button)findViewById(R.id.option);
         btn_option.setVisibility(View.VISIBLE);
+        
+        maxSelected = getIntent().getIntExtra(EXTRA_MAX, 3);
         
         initView();
         loadImages();
