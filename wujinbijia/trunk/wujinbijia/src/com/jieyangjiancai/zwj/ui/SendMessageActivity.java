@@ -37,6 +37,7 @@ import com.jieyangjiancai.zwj.config.ConfigUtil;
 import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.URLs;
 import com.jieyangjiancai.zwj.network.entity.CardId;
+import com.likebamboo.imagechooser.ui.PhotoActivity;
 
 public class SendMessageActivity extends BaseActivity implements OnClickListener {
 	private RelativeLayout mLayoutProgress;
@@ -102,23 +103,17 @@ public class SendMessageActivity extends BaseActivity implements OnClickListener
 			switch (requestCode) {
 			case ConfigUtil.PHOTO_PICKED_WITH_DATA: {// 调用Gallery返回的
 
-				if (data == null || data.getData() == null) {
-					ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
-					return;
-				}
-				//ContentResolver resolver = getContentResolver();
-				String selectedImagePath = null;
-				String fullPath;
-				Uri selectedImageUri = data.getData();
-				if (selectedImageUri != null) {
-					selectedImagePath = ImageUtils.getImagePath(selectedImageUri, this);
-				}
-
-				if (selectedImagePath != null) {
-					fullPath = selectedImagePath;
-				} else {
-					fullPath = ConfigUtil.getPhotoPath();
-				}
+			    if (data == null) {
+                    ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
+                    return;
+                }
+                ArrayList<String> paths = data.getStringArrayListExtra(PhotoActivity.EXTRA_PATH);
+                if(paths == null && paths.size() < 1){
+                    ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
+                    return;
+                }
+                String fullPath = paths.get(0);
+                
 				Bitmap bitmap = ConfigUtil.getThumbnailBitmap(this, fullPath);
 				if(bitmap != null){
 					fullPath = ConfigUtil.getThumbFilePath();
