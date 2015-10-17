@@ -46,6 +46,8 @@ public class BusinessActivity extends BaseActivity{
     private int uploadPathSize = 1;//记录上传图片 的张数
     private String upImageId = "";//记录当前图片 的ID
     public static final String EXTRA_ID = "extra_id"; 
+    public static final String EXTRA_CLASS = "extra_class"; 
+    private String eClass = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -56,20 +58,41 @@ public class BusinessActivity extends BaseActivity{
     }
 
     private void initView() {
+        
+        eClass = getIntent().getStringExtra(EXTRA_CLASS);
         mLayoutProgress = (RelativeLayout) findViewById(R.id.layout_progress_bar);
         mLayoutProgress.setVisibility(View.INVISIBLE);
-        
         bus_gridview = (GridView)findViewById(R.id.bus_gridview);
-        ((TextView) findViewById(R.id.title_bar_text)).setText("营业执照");        
         
-        List<CertificateArr> l = ConfigUtil.mUserInfo.getCompany_certificate_arr();
+        if(eClass == null){//营业执照
         
-        for (CertificateArr certificateArr : l) {
-            list.add(certificateArr.getThumb());
-            upImageId = upImageId + certificateArr.getPicture_id() + ",";
+            ((TextView) findViewById(R.id.title_bar_text)).setText("营业执照");        
+            
+            List<CertificateArr> l = ConfigUtil.mUserInfo.getCompany_certificate_arr();
+            
+            for (CertificateArr certificateArr : l) {
+                list.add(certificateArr.getThumb());
+                upImageId = upImageId + certificateArr.getPicture_id() + ",";
+            }
+            list.add(R.drawable.add_photo_order);
+        }else{//经营商品
+            ((TextView) findViewById(R.id.title_bar_text)).setText("经营商品");
+            
+            List<CertificateArr> l = ConfigUtil.mUserInfo.getProduct_picture_arr();
+            
+            for (CertificateArr certificateArr : l) {
+                list.add(certificateArr.getThumb());
+                upImageId = upImageId + certificateArr.getPicture_id() + ",";
+            }
+            list.add(R.drawable.add_photo_order);
+            
         }
-        list.add(R.drawable.add_photo_order);
+        
+        
         bus_gridview.setAdapter(new Adpter(this));
+        
+        
+        
         
         bus_gridview.setOnItemClickListener(new OnItemClickListener() {
 
@@ -146,7 +169,7 @@ public class BusinessActivity extends BaseActivity{
     {
         mLayoutProgress.setVisibility(View.VISIBLE);
         
-         String type = "7";
+         String type = eClass == null ? "7" : "8";//这里区分上传类型
          BackendDataApi bdApi = ((WJApplication)getApplicationContext()).getHttpRequest();
          bdApi.uploadImage(file, ConfigUtil.mUserId, ConfigUtil.mToken, type, reqUploadSuccessListener(), reqUploadErrorListener());
     }
@@ -159,7 +182,7 @@ public class BusinessActivity extends BaseActivity{
                     CardId cardId = CardId.parse(response);
                     if(cardId.getError() != 0)
                     {
-                        ToastMessage.show(BusinessActivity.this, "上传营业执照失败");
+                        ToastMessage.show(BusinessActivity.this, "上传失败");
                         return;
                     }else{
                     	uploadPathSize--;
@@ -170,7 +193,7 @@ public class BusinessActivity extends BaseActivity{
                     	
                     	if(uploadPathSize == 0){
                     		mLayoutProgress.setVisibility(View.INVISIBLE);
-                    		ToastMessage.show(BusinessActivity.this, "上传营业执照成功,请保存用户资料。");
+                    		ToastMessage.show(BusinessActivity.this, "上传成功,请保存用户资料。");
                     		Intent data = new Intent();
                     		data.putExtra(EXTRA_ID, upImageId);
                     		setResult(RESULT_OK, data);
@@ -193,7 +216,7 @@ public class BusinessActivity extends BaseActivity{
                 //String t = error.getMessage();
                 //ToastMessage.show(PensonInfoActivity.this, t);
                 mLayoutProgress.setVisibility(View.INVISIBLE);
-                ToastMessage.show(BusinessActivity.this, "上传营业执照失败。");
+                ToastMessage.show(BusinessActivity.this, "上传失败。");
             }
         };
     }

@@ -122,7 +122,7 @@ public class UpdateUserInfo extends BaseEntity {
 		return this.userType;
 	}	
 	
-	public List<CertificateArr> company_certificate_arr = new ArrayList<UpdateUserInfo.CertificateArr>();
+	public List<CertificateArr> company_certificate_arr = new ArrayList<UpdateUserInfo.CertificateArr>();//营业执照
 	
 	public List<CertificateArr> getCompany_certificate_arr() {
         return company_certificate_arr;
@@ -157,10 +157,18 @@ public class UpdateUserInfo extends BaseEntity {
         public void setThumb(String thumb) {
             this.thumb = thumb;
         }
-	    
 	}
 	
-	public static UpdateUserInfo parse(JSONObject response) throws JSONException {
+    public List<CertificateArr> product_picture_arr = new ArrayList<CertificateArr>();
+    
+	public List<CertificateArr> getProduct_picture_arr() {
+        return product_picture_arr;
+    }
+    public void setProduct_picture_arr(List<CertificateArr> product_picture_arr) {
+        this.product_picture_arr = product_picture_arr;
+    }
+    
+    public static UpdateUserInfo parse(JSONObject response) throws JSONException {
 		//{"data":
 		//		{"address":"","area_code":"75504","area_name":"福田","businesscard_id":0,
 		//			"city_code":"755","city_name":"深圳市",
@@ -218,6 +226,18 @@ public class UpdateUserInfo extends BaseEntity {
 		        arr.setThumb(cer.optString("thumb"));
 		        arr.setPicture_id(cer.optString("picture_id"));
 		        entity.company_certificate_arr.add(arr);
+            }
+		}
+		
+		if(jo.has("product_picture_arr")){
+		    JSONArray cerArr = jo.getJSONArray("product_picture_arr");
+            for (int i = 0; i < cerArr.length(); i++) {
+                CertificateArr arr = new CertificateArr();
+                JSONObject cer = cerArr.getJSONObject(i);
+                arr.setPath(cer.optString("path"));
+                arr.setThumb(cer.optString("thumb"));
+                arr.setPicture_id(cer.optString("picture_id"));
+                entity.product_picture_arr.add(arr);
             }
 		}
 		

@@ -114,6 +114,7 @@ public class BackendDataApi {
 	 */
 	public static void updateInfo(String user_id, String token, String user_name, String company_name, String province_code,
 			String city_code, String area_code, String address, String business_card, String user_type, String company_description,String company_certificate_id_arr ,
+			String product_picture_id_arr,
 			Response.Listener<JSONObject> listener, ErrorListener errorListener) {
 
 		String url = URLs.USER_UPDATE_INFO;
@@ -129,7 +130,10 @@ public class BackendDataApi {
 		builder.appendQueryParameter("business_card", business_card);
 		builder.appendQueryParameter("user_type", user_type);
 		builder.appendQueryParameter("company_description", company_description);
-		builder.appendQueryParameter("company_certificate_id_arr", company_certificate_id_arr);
+		if(!company_certificate_id_arr.equals(""))
+		    builder.appendQueryParameter("company_certificate_id_arr", company_certificate_id_arr);
+		if(!product_picture_id_arr.equals(""))
+		    builder.appendQueryParameter("product_picture_id_arr", product_picture_id_arr);
 		
 		mHttpRequestUtil.HttpRequest(builder, listener, errorListener);
 

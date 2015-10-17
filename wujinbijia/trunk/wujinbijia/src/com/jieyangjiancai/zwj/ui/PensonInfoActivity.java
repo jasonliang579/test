@@ -2,6 +2,7 @@ package com.jieyangjiancai.zwj.ui;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,6 +45,7 @@ import com.jieyangjiancai.zwj.network.BackendDataApi;
 import com.jieyangjiancai.zwj.network.entity.AddressCode;
 import com.jieyangjiancai.zwj.network.entity.CardId;
 import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo;
+import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo.CertificateArr;
 
 public class PensonInfoActivity extends BaseActivity implements OnClickListener {
 	
@@ -81,9 +83,11 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 	
 	private RelativeLayout pens_layout_company;
 	private RelativeLayout pens_layout_business;
+	private RelativeLayout pens_layout_optrating;
 	
 	private String companyString = "";//记录返回的公司介绍
-	private String businessString = "";
+	private String businessString = "";//上传营业执照返回id  1,2,3,4
+	private String optString = "";//上传经营产品返回id  1,2,3,4
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +138,19 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 		pens_layout_company.setOnClickListener(this);
 		pens_layout_business = (RelativeLayout)findViewById(R.id.pens_layout_business);
 		pens_layout_business.setOnClickListener(this);
+		pens_layout_optrating = (RelativeLayout)findViewById(R.id.pens_layout_optrating);
+		pens_layout_optrating.setOnClickListener(this);
+		
+		List<CertificateArr> l = ConfigUtil.mUserInfo.getCompany_certificate_arr();//
+        for (CertificateArr certificateArr : l) {//初始化营业执照id
+            businessString = businessString + certificateArr.getPicture_id() + ",";
+        }
+		
+        List<CertificateArr> opt = ConfigUtil.mUserInfo.getProduct_picture_arr();
+        for (CertificateArr certificateArr : opt) {//初始化经营商品id
+            optString = optString + certificateArr.getPicture_id() + ",";
+        }
+        
 		
 		if (ConfigUtil.mUserInfo != null)
 		{
@@ -469,7 +486,7 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 		 
 		 BackendDataApi bdApi = ((WJApplication)getApplicationContext()).getHttpRequest();
 		 bdApi.updateInfo(user_id, token, user_name, company_name, province_code,
-				 city_code, area_code, address, business_card, user_type, companyString , businessString ,
+				 city_code, area_code, address, business_card, user_type, companyString , businessString , optString,
 				 reqPersonSuccessListener(), reqPersonErrorListener());
 	 }
 	 
@@ -563,7 +580,9 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 			case 10002 :
 				businessString = data.getStringExtra(BusinessActivity.EXTRA_ID);
 				break;
-			
+			case 10003 :
+			    optString = data.getStringExtra(BusinessActivity.EXTRA_ID);
+			    break;
 			}
 			
 		}
@@ -677,6 +696,11 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 		case R.id.pens_layout_business :
 		    Intent bus = new Intent(this , BusinessActivity.class);
 		    startActivityForResult(bus , 10002);
+		    break;
+		case R.id.pens_layout_optrating :
+		    Intent opt = new Intent(this , BusinessActivity.class);
+		    opt.putExtra(BusinessActivity.EXTRA_CLASS, "1");
+		    startActivityForResult(opt , 10003);
 		    break;
 		}
 	}
