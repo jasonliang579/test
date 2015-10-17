@@ -123,7 +123,7 @@ public class ImageListActivity extends BaseActivity implements OnItemClickListen
             if (size == 1)
                 btn_option.setText(checkStr + "(" + selectedList.size() + ")");
             else
-                btn_option.setText(searchStr + "(" + selectedList.size() + ")");
+                btn_option.setText(/*searchStr*/checkStr + "(" + selectedList.size() + ")");
             btn_option.setEnabled(true);
         } else {
             btn_option.setText(checkStr);
