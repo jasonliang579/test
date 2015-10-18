@@ -2,6 +2,7 @@ package com.jieyangjiancai.zwj.ui;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
@@ -46,6 +47,7 @@ import com.jieyangjiancai.zwj.network.entity.AddressCode;
 import com.jieyangjiancai.zwj.network.entity.CardId;
 import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo;
 import com.jieyangjiancai.zwj.network.entity.UpdateUserInfo.CertificateArr;
+import com.likebamboo.imagechooser.ui.PhotoActivity;
 
 public class PensonInfoActivity extends BaseActivity implements OnClickListener {
 	
@@ -88,6 +90,7 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 	private String companyString = "";//记录返回的公司介绍
 	private String businessString = "";//上传营业执照返回id  1,2,3,4
 	private String optString = "";//上传经营产品返回id  1,2,3,4
+	private String businesscard_id = "";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +153,6 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
         for (CertificateArr certificateArr : opt) {//初始化经营商品id
             optString = optString + certificateArr.getPicture_id() + ",";
         }
-        
 		
 		if (ConfigUtil.mUserInfo != null)
 		{
@@ -171,6 +173,9 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 			{
 				mImageBuySelect.setImageResource(R.drawable.radio_unselect);
 				mImageSaleSelect.setImageResource(R.drawable.radio_selected);
+			}
+			if(userInfo.getBusinesscardId() != null && !userInfo.getBusinesscardId().equals("")){
+				mEditIdCard.setText("名片已上传");
 			}
 		}
 	}
@@ -480,7 +485,7 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 		 String city_code	  = itemCity.id;
 		 String area_code	  = itemArea.id;
 		 String address		  = mEditAddress.getText().toString();
-		 String business_card = mEditIdCard.getText().toString();
+		 String business_card = businesscard_id;
 		 String user_type 	  = mUserType;
 		
 		 
@@ -530,7 +535,7 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 			switch (requestCode) {
 			case ConfigUtil.PHOTO_PICKED_WITH_DATA: {// 调用Gallery返回的
 
-				if (data == null || data.getData() == null) {
+				/*if (data == null || data.getData() == null) {
 					ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
 					return;
 				}
@@ -554,8 +559,28 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 				}
 
 				File file = new File(fullPath);
-				UploadImage(file);
+				UploadImage(file);*/
+				
+				if (data == null) {
+		             ToastMessage.show(this, "请尝试使用其他相册浏览!");
+		             return ;
+		         }
+		         ArrayList<String> paths = data.getStringArrayListExtra(PhotoActivity.EXTRA_PATH);
+		         if(paths == null && paths.size() < 1){
+		             ToastMessage.show(this, "请尝试使用其他相册浏览!");
+		             return ;
+		         }
+		         
+		         String fullPath = paths.get(0);
+		         Bitmap bitmap = ConfigUtil.getThumbnailBitmap(this, fullPath);
+					if(bitmap != null){
+						fullPath = ConfigUtil.getThumbFilePath();
+					}else{
+						return;
+					}
 
+					File file = new File(fullPath);
+					UploadImage(file);
 				break;
 			}
 			case ConfigUtil.CAMERA_WITH_DATA: {// 照相机程序返回
@@ -611,7 +636,8 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 						ToastMessage.show(PensonInfoActivity.this, "上传名片失败");
 						return;
 					}
-					//mEditIdCard.setText(cardId.getPhotoId());
+//					mEditIdCard.setText(cardId.getPhotoId());
+					businesscard_id = cardId.getPhotoId();
 					mEditIdCard.setText("名片已上传");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -686,7 +712,7 @@ public class PensonInfoActivity extends BaseActivity implements OnClickListener 
 			
 		case R.id.image_upload:
 			//SelectImage();
-			ConfigUtil.doPickPhotoAction(this);
+			ConfigUtil.doPickPhotoAction(this , 1);
 			break;
 		case R.id.pens_layout_company :
 		    Intent intent = new Intent(this , ComPanyEditActivity.class);

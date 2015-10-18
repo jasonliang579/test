@@ -99,7 +99,7 @@ public class BusinessActivity extends BaseActivity{
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int pos, long arg3) {
                 if(pos == list.size() -1 ){
-                    ConfigUtil.doPickPhotoAction(BusinessActivity.this);
+                    ConfigUtil.doPickPhotoAction(BusinessActivity.this , 9);
                 }
             }
         });

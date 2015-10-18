@@ -3,6 +3,7 @@ package com.jieyangjiancai.zwj.config;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.crypto.Cipher;
@@ -22,10 +23,14 @@ import android.net.Uri;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 
+import com.jieyangjiancai.zwj.R;
 import com.jieyangjiancai.zwj.common.FileUtils;
 import com.jieyangjiancai.zwj.common.ImageUtils;
 import com.jieyangjiancai.zwj.common.StringUtils;
@@ -125,8 +130,12 @@ public class ConfigUtil {
         Date date = new Date(dateTime*1000);
         return sDateFormat.format(date);
     }
-
-	public static void doPickPhotoAction(Context context) {
+	/**
+	 * 弹出选择框，选择图片
+	 * @param context
+	 * @param seleteSize 最多 可以 选择多少张图片 
+	 */
+	public static void doPickPhotoAction(Context context , final int seleteSize) {
 		mActivity = (Activity) context;
 
 		// Wrap our context to inflate list items using correct theme
@@ -156,7 +165,7 @@ public class ConfigUtil {
 				}
 				case 1:
 //					doPickPhotoFromGallery();// 从相册中去获取
-				    doMyPicPhoto(3);
+				    doMyPicPhoto(seleteSize);
 					break;
 				}
 			}
@@ -189,7 +198,50 @@ public class ConfigUtil {
             // Toast.LENGTH_LONG).show();
         }
     }
-	
+	//自定义相册获取 相应图片 路径 组
+    public static ArrayList<File> getOnActivityResultPaths(Context cotext , Intent data , ArrayList<File> mFiles){
+    	 if (data == null) {
+             ToastMessage.show(cotext, "请尝试使用其他相册浏览!");
+             return mFiles;
+         }
+         ArrayList<String> paths = data.getStringArrayListExtra(PhotoActivity.EXTRA_PATH);
+         if(paths == null && paths.size() < 1){
+             ToastMessage.show(cotext, "请尝试使用其他相册浏览!");
+             return mFiles;
+         }
+         
+         
+         for (int i = 0; i < paths.size(); i++) {
+				String fullPath = paths.get(i);
+				Bitmap bitmap = ConfigUtil.getThumbnailBitmap(cotext, fullPath);
+				if(bitmap != null){
+					fullPath = ConfigUtil.getThumbFilePath();
+				}else{
+					return mFiles;
+				}
+				if(mFiles.size() == 0) {
+					ImageView imageView = (ImageView) ((Activity) cotext).findViewById(R.id.image_content1);
+					imageView.setImageBitmap(bitmap);
+					imageView.setVisibility(View.VISIBLE);
+				} else if (mFiles.size() == 1) {
+					ImageView imageView = (ImageView) ((Activity) cotext).findViewById(R.id.image_content2);
+					imageView.setImageBitmap(bitmap);
+					imageView.setVisibility(View.VISIBLE);
+				} else if (mFiles.size() == 2) {
+					ImageView imageView = (ImageView) ((Activity) cotext).findViewById(R.id.image_content3);
+					imageView.setImageBitmap(bitmap);
+					imageView.setVisibility(View.VISIBLE);
+				} else
+					return mFiles;
+
+				File file = new File(fullPath);
+				mFiles.add(file);
+				Log.d("wujin", "path=" + fullPath);
+			}
+         
+         return mFiles;
+    }
+    
 	public static File GetPhotoFile() {
 		// return mCurrentPhotoFile;
 		File file = null;

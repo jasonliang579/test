@@ -136,7 +136,7 @@ public class PayOrderActivity extends BaseActivity implements OnClickListener {
 			finish();
 			break;
 		case R.id.text_upload_payphoto:
-			ConfigUtil.doPickPhotoAction(this);
+			ConfigUtil.doPickPhotoAction(this , 3);
 			break;
 			
 		case R.id.btn_pay:
@@ -269,47 +269,37 @@ public class PayOrderActivity extends BaseActivity implements OnClickListener {
 
 			switch (requestCode) {
 			case ConfigUtil.PHOTO_PICKED_WITH_DATA: {// 调用Gallery返回的
-				if (data == null || data.getData() == null) {
-					ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
-					return;
-				}
-				String selectedImagePath = null;
-				String fullPath;
-				Uri selectedImageUri = data.getData();
-				if (selectedImageUri != null) {
-					selectedImagePath = ImageUtils.getImagePath(selectedImageUri, this);
-				}
+				
+				/*ArrayList<String> paths = ConfigUtil.getOnActivityResultPaths(this, data);
+				if(paths == null) return;
+				for (int i = 0; i < paths.size(); i++) {
+					String fullPath = paths.get(i);
+					Bitmap bitmap = ConfigUtil.getThumbnailBitmap(this, fullPath);
+					if(bitmap != null){
+						fullPath = ConfigUtil.getThumbFilePath();
+					}else{
+						return;
+					}
+					if(mFiles.size() == 0) {
+						ImageView imageView = (ImageView) findViewById(R.id.image_content1);
+						imageView.setImageBitmap(bitmap);
+						imageView.setVisibility(View.VISIBLE);
+					} else if (mFiles.size() == 1) {
+						ImageView imageView = (ImageView) findViewById(R.id.image_content2);
+						imageView.setImageBitmap(bitmap);
+						imageView.setVisibility(View.VISIBLE);
+					} else if (mFiles.size() == 2) {
+						ImageView imageView = (ImageView) findViewById(R.id.image_content3);
+						imageView.setImageBitmap(bitmap);
+						imageView.setVisibility(View.VISIBLE);
+					} else
+						return;
 
-				if (selectedImagePath != null) {
-					fullPath = selectedImagePath;
-				} else {
-					fullPath = ConfigUtil.getPhotoPath();
-				}
-				Bitmap bitmap = ConfigUtil.getThumbnailBitmap(this, fullPath);
-				if(bitmap != null){
-					fullPath = ConfigUtil.getThumbFilePath();
-				}else{
-					return;
-				}
-				if (mFiles.size() == 0) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content1);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-				} else if (mFiles.size() == 1) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content2);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-				} else if (mFiles.size() == 2) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content3);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-				} else
-					return;
-
-				File file = new File(fullPath);
-				mFiles.add(file);
-				Log.d("wujin", "path=" + fullPath);
-
+					File file = new File(fullPath);
+					mFiles.add(file);
+					Log.d("wujin", "path=" + fullPath);
+				}*/
+				mFiles = ConfigUtil.getOnActivityResultPaths(this, data, mFiles);
 				break;
 			}
 			case ConfigUtil.CAMERA_WITH_DATA: {// 照相机程序返回的,再次调用图片剪辑程序去修剪图片

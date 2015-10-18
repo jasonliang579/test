@@ -188,7 +188,7 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 			break;
 
 		case R.id.image_select_picture1:
-			ConfigUtil.doPickPhotoAction(this);
+			ConfigUtil.doPickPhotoAction(this , 3);
 			// SelectImage();
 			break;
 			
@@ -458,7 +458,7 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 
 			switch (requestCode) {
 			case ConfigUtil.PHOTO_PICKED_WITH_DATA: {// 调用Gallery返回的
-				if (data == null || data.getData() == null) {
+				/*if (data == null || data.getData() == null) {
 					ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
 					return;
 				}
@@ -498,8 +498,8 @@ public class GetOrderMakePriceActivity extends BaseActivity implements OnClickLi
 
 				File file = new File(fullPath);
 				mFiles.add(file);
-				Log.d("wujin", "path=" + fullPath);
-
+				Log.d("wujin", "path=" + fullPath);*/
+				mFiles = ConfigUtil.getOnActivityResultPaths(this, data, mFiles);
 				break;
 			}
 			case ConfigUtil.CAMERA_WITH_DATA: {// 照相机程序返回的,再次调用图片剪辑程序去修剪图片

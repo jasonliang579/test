@@ -108,7 +108,7 @@ public class QueryOrderActivity extends BaseActivity implements OnClickListener 
 			switch (requestCode) {
 			case ConfigUtil.PHOTO_PICKED_WITH_DATA: {// 调用Gallery返回的
 
-				if (data == null || data.getData() == null) {
+				/*if (data == null || data.getData() == null) {
 					ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
 					return;
 				}
@@ -143,8 +143,10 @@ public class QueryOrderActivity extends BaseActivity implements OnClickListener 
 					return;
 
 				File file = new File(fullPath);
-				mFiles.add(file);
-
+				mFiles.add(file);*/
+				
+				mFiles = ConfigUtil.getOnActivityResultPaths(this, data, mFiles);
+				
 				break;
 			}
 			case ConfigUtil.CAMERA_WITH_DATA: {// 照相机程序返回
@@ -209,7 +211,7 @@ public class QueryOrderActivity extends BaseActivity implements OnClickListener 
 		return new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
-				// ToastMessage.show(MakeOrderActivity.this, "上传照片成功");
+				 ToastMessage.show(QueryOrderActivity.this, "上传照片成功");
 				try {
 					CardId cardId = CardId.parse(response);
 
@@ -284,7 +286,7 @@ public class QueryOrderActivity extends BaseActivity implements OnClickListener 
 		return new Response.Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
-				ToastMessage.show(QueryOrderActivity.this, "提交订单成功");
+//				ToastMessage.show(QueryOrderActivity.this, "提交订单成功");
 				InitData();
 				//finish();
 				try {
@@ -485,7 +487,7 @@ public class QueryOrderActivity extends BaseActivity implements OnClickListener 
 
 		case R.id.img_add_photoorder:
 			// SelectImage();
-			ConfigUtil.doPickPhotoAction(this);
+			ConfigUtil.doPickPhotoAction(this , 3);
 			break;
 
 		case R.id.btn_makeorder:

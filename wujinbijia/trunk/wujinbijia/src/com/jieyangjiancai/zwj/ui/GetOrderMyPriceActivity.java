@@ -53,7 +53,7 @@ public class GetOrderMyPriceActivity extends BaseActivity implements OnClickList
 	private MyAdapter mMyAdapter;
 	private ArrayList<MyPriceItem> mListMyPrice = new ArrayList<MyPriceItem>();
 	
-	private String PGAE_COUNT = ConfigUtil.mPageSize;
+	private String PGAE_COUNT = "2"/*ConfigUtil.mPageSize*/;
 	private HashMap<String, Bitmap> mMapBitmap = new HashMap<String, Bitmap>();
 	
 	private PullToRefreshView mListViewPull; 
@@ -283,8 +283,9 @@ public class GetOrderMyPriceActivity extends BaseActivity implements OnClickList
 					//mListMyPrice = myPriceList.GetMyPrices();
 					
 					ArrayList<MyPriceItem> listPrice = myPriceList.GetMyPrices();
-					if (listPrice == null || listPrice.size() <= 0)
+					if (listPrice == null || listPrice.size() <= 0){
 						mListViewPull.StopFooterRefresh(true);
+					}
 					else
 					{
 						int finalId = -1;
@@ -292,8 +293,10 @@ public class GetOrderMyPriceActivity extends BaseActivity implements OnClickList
 						for (int i=0; i<listPrice.size(); i++)
 						{
 							mListMyPrice.add(listPrice.get(i));
-							mFinalId = listPrice.get(i).order_message.order_message_id;
-							tempFinalId = Integer.valueOf(mFinalId);
+							mFinalId = listPrice.get(i).getOrder_message().getOrder_message_id();
+							String s = mFinalId;
+							System.out.println(mFinalId);
+							/*tempFinalId = Integer.valueOf(mFinalId);
 							if (finalId == -1)
 							{
 								finalId = tempFinalId;
@@ -302,10 +305,11 @@ public class GetOrderMyPriceActivity extends BaseActivity implements OnClickList
 							{
 								if (tempFinalId < finalId)
 									finalId = tempFinalId;
-							}
+							}*/
+							;
 						}
 						
-						mFinalId = String.valueOf(finalId);
+//						mFinalId = String.valueOf(finalId);
 						
 						mMyAdapter.notifyDataSetChanged();
 					}

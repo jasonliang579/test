@@ -85,7 +85,7 @@ public class SendMessageActivity extends BaseActivity implements OnClickListener
 			break;
 			
 		case R.id.image_select_picture1:
-			ConfigUtil.doPickPhotoAction(this);
+			ConfigUtil.doPickPhotoAction(this , 9);
 			break;
 			
 		case R.id.btn_send_message:
@@ -112,33 +112,23 @@ public class SendMessageActivity extends BaseActivity implements OnClickListener
                     ToastMessage.show(getApplicationContext(), "请尝试使用其他相册浏览!");
                     return;
                 }
-                String fullPath = paths.get(0);
                 
-				Bitmap bitmap = ConfigUtil.getThumbnailBitmap(this, fullPath);
-				if(bitmap != null){
-					fullPath = ConfigUtil.getThumbFilePath();
-				}else{
-					return;
-				}
-				if (mFiles.size() == 0) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content1);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-					mSelectPhoto.setVisibility(View.GONE);
-				} else if (mFiles.size() == 1) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content2);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-				} else if (mFiles.size() == 2) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content3);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-				} else
-					return;
+                for (int i = 0; i < paths.size(); i++) {
+                	String fullPath = paths.get(i);
+                    
+    				Bitmap bitmap = ConfigUtil.getThumbnailBitmap(this, fullPath);
+    				if(bitmap != null){
+    					fullPath = ConfigUtil.getThumbFilePath();
+    				}else{
+    					return;
+    				}
+    				showImageViewBitmap(bitmap);
 
-				File file = new File(fullPath);
-				mFiles.add(file);
-				Log.d("wujin", "path=" + fullPath);
+    				File file = new File(fullPath);
+    				mFiles.add(file);
+    				Log.d("wujin", "path=" + fullPath);
+				}
+                
 
 				break;
 			}
@@ -151,22 +141,7 @@ public class SendMessageActivity extends BaseActivity implements OnClickListener
 				}else{
 					return;
 				}
-				if (mFiles.size() == 0) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content1);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-					mSelectPhoto.setVisibility(View.GONE);
-				} else if (mFiles.size() == 1) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content2);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-				} else if (mFiles.size() == 2) {
-					ImageView imageView = (ImageView) findViewById(R.id.image_content3);
-					imageView.setImageBitmap(bitmap);
-					imageView.setVisibility(View.VISIBLE);
-				} else
-					return;
-
+				showImageViewBitmap(bitmap);
 				File file = new File(fullPath);
 				mFiles.add(file);
 
@@ -178,8 +153,27 @@ public class SendMessageActivity extends BaseActivity implements OnClickListener
 
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-
-
+	
+	private int [] imageId = new int[]{R.id.image_content1 , R.id.image_content2 , R.id.image_content3 , R.id.image_content4 , R.id.image_content5 , R.id.image_content6 
+			, R.id.image_content7 , R.id.image_content8 , R.id.image_content9 };
+	/**
+	 * 设置上传图片
+	 * @param bitmap
+	 */
+	private void showImageViewBitmap(Bitmap bitmap){
+		if(mFiles.size() >= 9 ) {
+			return;
+		}
+		
+		int id = imageId[mFiles.size()];
+		
+		ImageView imageView = (ImageView) findViewById(id);
+		imageView.setImageBitmap(bitmap);
+		imageView.setVisibility(View.VISIBLE);
+		if(mFiles.size() == 8)
+			mSelectPhoto.setVisibility(View.GONE);
+	}
+	
 
 	private void SendMessage() {
 		if (mFiles.size() <= 0) {
